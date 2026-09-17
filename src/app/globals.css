@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── FINTRA palette ──
+     Warm off-white base, deep charcoal ink, muted copper accent,
+     sage/olive support. Calm, institutional, finance-native. */
+  --color-paper: #faf9f7;
+  --color-paper-deep: #f2f0ec;
+  --color-surface: #ffffff;
+  --color-ink: #1c1917;
+  --color-ink-soft: #44403c;
+  --color-ink-mute: #78716c;
+  --color-ink-faint: #a8a29e;
+  --color-line: #e7e5e4;
+  --color-line-strong: #d6d3d1;
+  --color-copper: #b45309;
+  --color-copper-strong: #92400e;
+  --color-copper-soft: #fef3e2;
+  --color-sage: #6b7f5e;
+  --color-sage-soft: #eef2ea;
+  --color-charcoal: #17150f;
+  --color-charcoal-soft: #23211c;
+
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+
+  --radius-card: 14px;
+  --shadow-card: 0 1px 2px rgb(28 25 23 / 0.04), 0 4px 12px rgb(28 25 23 / 0.05);
+  --shadow-pop: 0 8px 30px rgb(28 25 23 / 0.12);
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.5s ease both;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-copper-soft);
+  color: var(--color-copper-strong);
+}
+
+/* Focus visibility for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-copper);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion: disable decorative animation globally */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Thin, calm scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
