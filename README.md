@@ -2,7 +2,7 @@
 
 The complete public website for FINTRA: multi-page marketing site, pricing,
 authentication, checkout, and integration with the existing FINTRA workspace
-product (`https://final-product-one.vercel.app`).
+product (`[https://final-product-one.vercel.app](https://fintra-project-hpx4.vercel.app/)`).
 
 Built with **Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · Framer Motion**.
 
