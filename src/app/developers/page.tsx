@@ -8,25 +8,25 @@ import { pageMeta } from "@/lib/site";
 export const metadata: Metadata = pageMeta({
   title: "Developers",
   description:
-    "Build on Fintra: the Fintra API, documentation, and integrations for extending your finance workspace.",
+    "Build on DataLens: the DataLens API, documentation, and integrations for extending your data workspace.",
   path: "/developers",
 });
 
 const CARDS = [
   {
-    title: "Fintra API",
+    title: "DataLens API",
     href: "/developers/api",
     desc: "Programmatic access to workspaces, analyses, and generated reports — planned and documented transparently.",
   },
   {
     title: "Documentation",
     href: "/developers/docs",
-    desc: "Guides and reference for working with Fintra's platform capabilities today.",
+    desc: "Guides and reference for working with DataLens's platform capabilities today.",
   },
   {
     title: "Integrations",
     href: "/developers/integrations",
-    desc: "How Fintra connects to the tools finance teams already use — and what's on the roadmap.",
+    desc: "How DataLens connects to the tools data teams already use — and what's on the roadmap.",
   },
 ];
 
@@ -35,8 +35,8 @@ export default function DevelopersPage() {
     <PageShell>
       <PageHero
         eyebrow="Developers"
-        title="Build on Fintra."
-        description="A platform for extending Fintra across your finance stack — with an API and integrations on a transparent roadmap."
+        title="Build on DataLens."
+        description="A platform for extending DataLens across your data stack — with an API and integrations on a transparent roadmap."
       />
       <section className="border-b border-line">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
@@ -64,13 +64,13 @@ export default function DevelopersPage() {
             <SectionHeading
               eyebrow="Status"
               title="What's real, and what's coming."
-              description="We document the platform honestly. Today, Fintra is a complete product workspace; the developer platform below is planned and scoped."
+              description="We document the platform honestly. Today, DataLens is a complete product workspace; the developer platform below is planned and scoped."
             />
           </Reveal>
           <div className="mt-10 space-y-4">
             {[
               ["Available today", "Workspace, multi-model AI, analysis, reports, agents, workflows, and templates — all live in the product.", true],
-              ["In design", "The Fintra API: programmatic access to run analyses and retrieve reports.", false],
+              ["In design", "The DataLens API: programmatic access to run analyses and retrieve reports.", false],
               ["Planned", "Native integrations with accounting and planning systems.", false],
             ].map(([status, desc, live]) => (
               <Reveal key={status as string}>
@@ -89,7 +89,7 @@ export default function DevelopersPage() {
         </div>
       </section>
       <CtaBand
-        title="Building something on Fintra?"
+        title="Building something on DataLens?"
         description="Tell us what you'd want from the API — early design feedback shapes the roadmap."
         primary={{ label: "Contact us", href: "/contact" }}
         secondary={{ label: "Read the docs", href: "/developers/docs" }}

@@ -15,7 +15,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
       </main>
       <div className="px-5 pb-6 text-center text-[12.5px] text-ink-faint sm:px-8">
         <Link href="/" className="hover:text-ink-mute">
-          fintra.com →
+          datalens.example.com →
         </Link>
       </div>
     </div>

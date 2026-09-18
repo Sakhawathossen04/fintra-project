@@ -11,17 +11,16 @@ import { pageMeta } from "@/lib/site";
 interface ProductFeature {
   slug:
     | "workspace"
-    | "models"
-    | "analysis"
+    | "eda"
+    | "charts"
+    | "chat"
     | "reports"
-    | "agents"
-    | "workflows"
+    | "models"
     | "model-routing";
   eyebrow: string;
   title: string;
   description: string;
   cta: { label: string; href: string };
-  // Three narrative rows, each with distinct visual
   rows: {
     title: string;
     description: string;
@@ -37,323 +36,323 @@ const FEATURES: Record<string, ProductFeature> = {
   workspace: {
     slug: "workspace",
     eyebrow: "Product · Workspace",
-    title: "The workspace where finance work comes together.",
+    title: "The workspace where data analysis comes together.",
     description:
-      "Conversations, files, projects, and history — organized around how finance teams actually operate, with the model of your choice one click away.",
-    cta: { label: "Start using the workspace", href: "/signup" },
+      "Chat, datasets, figures, and history — organized around how analysis actually happens, with no login required and the model of your choice one click away.",
+    cta: { label: "Open the workspace", href: "/agent" },
     rows: [
       {
-        title: "Projects keep work separated",
+        title: "Threads keep analyses separated",
         description:
-          "Each close, forecast, or deal lives in its own project with its own files, chats, and outputs. Switching context doesn't mean losing it.",
-        bullets: ["Per-project files and history", "Share outputs with teammates", "Pick up any thread where you left it"],
+          "Each dataset, question, and deliverable lives in its own thread with its own files and figures. Switching context doesn't mean losing it.",
+        bullets: ["Per-thread datasets and history", "Everything saved automatically", "Pick up any thread where you left it"],
         visual: "chat",
       },
       {
         title: "Files that are ready to analyze",
         description:
-          "Upload spreadsheets, statements, and decks. Fintra reads tables and structure — so answers reflect the real numbers, not a paraphrase.",
-        bullets: ["Excel, CSV, PDF, and slide support", "Tables preserved, not flattened", "Source-linked citations"],
+          "Drop a CSV, TSV, or JSON file and DataLens reads the structure — delimiters, types, missing values — so answers reflect the real numbers.",
+        bullets: ["CSV, TSV, and JSON support", "Types inferred automatically", "Drag-and-drop or paste raw data"],
         visual: "report",
       },
       {
         title: "History you can audit",
         description:
-          "Every conversation and output is preserved with its model, sources, and timestamps — so you can always answer 'where did this number come from?'",
-        bullets: ["Full conversation history", "Model and source provenance", "Export anything, anytime"],
+          "Every conversation and figure is preserved with its model and timestamp — so you can always answer 'where did this number come from?'",
+        bullets: ["Full thread history", "Model provenance per answer", "Export anything, anytime"],
         visual: "chart",
       },
     ],
     capabilities: [
-      { title: "Multi-model chat", description: "Switch models per message or set a default per project." },
-      { title: "File library", description: "Keep statements, models, and decks attached to the right work." },
-      { title: "Templates", description: "Start reports and analyses from your team's standard formats." },
-      { title: "Search across history", description: "Find that analysis from last quarter in seconds." },
+      { title: "Multi-model chat", description: "Switch models per message or let the smart router decide." },
+      { title: "Dataset library", description: "Keep every uploaded file attached to the right thread." },
+      { title: "Quick / Deep modes", description: "Fast answers for lookups; comprehensive EDA for the real work." },
+      { title: "Search across history", description: "Find last week's analysis in seconds." },
     ],
     useCases: [
-      { title: "Monthly close", description: "Keep the whole close in one project — analyses, docs, and follow-ups." },
-      { title: "Board prep", description: "Build the pack, the exhibits, and the talking points side by side." },
-      { title: "Deal review", description: "Analyze a target's filings and model alongside the deal team." },
+      { title: "One-off questions", description: "Open the workspace, drop a file, ask — no setup." },
+      { title: "Ongoing projects", description: "Keep a dataset and its full analysis history in one thread." },
+      { title: "Team handoffs", description: "Export the analysis and report so anyone can pick it up." },
     ],
     faq: [
-      { q: "Is the workspace just a chat interface?", a: "No — chat is the starting point. Projects, files, reports, agents, and workflows build on it, all sharing the same context." },
-      { q: "Can I export my work?", a: "Yes. Reports, tables, and conversations can be exported — your work is never locked in." },
+      { q: "Is the workspace just a chat interface?", a: "No — chat is the starting point. The Analysis tab renders the full EDA, Reports turns it into deliverables, and History keeps everything findable." },
+      { q: "Do I need an account?", a: "No. The workspace is open. Threads are kept private to your browser — sign in on the marketing site only if you want billing and settings." },
     ],
   },
-  models: {
-    slug: "models",
-    eyebrow: "Product · Multi-model AI",
-    title: "Every leading model. One subscription.",
+  eda: {
+    slug: "eda",
+    eyebrow: "Product · Automatic EDA",
+    title: "A complete exploratory analysis, on arrival.",
     description:
-      "GPT, Claude, Gemini, DeepSeek, and Qwen — included in Fintra. Choose the right model per task without juggling five separate tools.",
-    cta: { label: "Try the models", href: "/signup" },
+      "The moment a file lands, the EDA engine profiles every column: statistics, distributions, missing values, duplicates, outliers, and quality scores — computed, not hallucinated.",
+    cta: { label: "Run your first EDA", href: "/agent" },
     rows: [
       {
-        title: "Pick per task, not per tool",
+        title: "Every column, profiled",
         description:
-          "Different models have different strengths — extraction speed, careful reasoning, long-document synthesis. Fintra puts them side by side.",
-        bullets: ["Model picker on every conversation", "Compare answers across models", "Defaults per project or per task type"],
-        visual: "models",
+          "Numeric columns get mean, median, σ, quartiles, skew, kurtosis, and IQR outliers. Categoricals get frequencies and concentration. Dates get ranges and periods.",
+        bullets: ["Full numeric summaries", "Frequency tables with shares", "Mode, skew, and kurtosis included"],
+        visual: "chart",
       },
       {
-        title: "Consistent context across models",
+        title: "Quality scored, issues surfaced",
         description:
-          "Your files, project context, and history carry across models — so switching models never means re-explaining the work.",
-        bullets: ["Shared file and project context", "Consistent system guidance", "No copy-paste between tools"],
+          "A 0-100 quality score combines completeness and uniqueness. Missing cells, duplicate rows, and constant columns are flagged with concrete fixes.",
+        bullets: ["Missing values per column", "Duplicate row detection", "Constant-column warnings"],
+        visual: "report",
+      },
+      {
+        title: "Findings, written down",
+        description:
+          "The engine writes what it found — heavy skew, outlier clusters, single-value columns — so the AI narrates real patterns instead of generic filler.",
+        bullets: ["Skew and outlier alerts", "Segment gaps quantified", "Every claim traced to a stat"],
+        visual: "agent",
+      },
+    ],
+    capabilities: [
+      { title: "Type inference", description: "Numbers, dates, booleans, and categories detected from messy values — currency, commas, parentheses handled." },
+      { title: "IQR outlier detection", description: "Tukey fences with z-scores, flagged for review." },
+      { title: "Quality score", description: "One number for completeness and uniqueness, with the math shown." },
+      { title: "JSON & CSV native", description: "Row- and column-oriented JSON both work, with lenient parsing." },
+    ],
+    useCases: [
+      { title: "New dataset triage", description: "Know what you're dealing with before any modeling." },
+      { title: "Data quality audits", description: "Quantify missingness and duplicates for stakeholders." },
+      { title: "Reproducible profiling", description: "Re-run the EDA after every data refresh." },
+    ],
+    faq: [
+      { q: "Does the EDA use the AI model?", a: "No. Parsing and statistics are deterministic TypeScript — same file, same numbers, every time. The AI's job is explaining those numbers." },
+      { q: "How large can my file be?", a: "Up to 6 MB on the free tier — comfortably tens of thousands of rows. Pro raises the ceiling." },
+    ],
+  },
+  charts: {
+    slug: "charts",
+    eyebrow: "Product · Charts & figures",
+    title: "Every pattern, drawn automatically.",
+    description:
+      "Distributions, trend lines, scatter fits, box plots, heatmaps, and composition charts — generated from your data without a single plotting library call.",
+    cta: { label: "See it on your data", href: "/agent" },
+    rows: [
+      {
+        title: "Figures picked for the data",
+        description:
+          "Numeric columns get histograms and box plots; categoricals get composition charts; paired numerics get scatter fits; dates get trend lines with regression overlays.",
+        bullets: ["Histograms with outlier context", "Regression lines with R²", "Row-normalized heatmaps"],
+        visual: "chart",
+      },
+      {
+        title: "Rendered crisp, exported clean",
+        description:
+          "Figures are vector-sharp inline SVG — readable at any size, printable in reports, and exportable alongside the analysis JSON.",
+        bullets: ["SVG — sharp at any scale", "Consistent, theme-matched styling", "Export with the full analysis"],
+        visual: "report",
+      },
+      {
+        title: "Correlation at a glance",
+        description:
+          "The correlation matrix colors every pairwise relationship, and the strongest pairs are pulled out as scatter plots with fitted trend lines.",
+        bullets: ["Full pairwise matrix", "Top pairs highlighted", "Pearson r and R² labeled"],
+        visual: "chart",
+      },
+    ],
+    capabilities: [
+      { title: "Distributions", description: "Histograms sized to the data with skew and outlier annotations." },
+      { title: "Trends", description: "Time series with linear-regression overlay when a date column exists." },
+      { title: "Segments", description: "Group means by category — the gaps made visible." },
+      { title: "Compositions", description: "Donut charts and ranked bars for categorical mix." },
+    ],
+    useCases: [
+      { title: "Stakeholder decks", description: "Figures clean enough to paste straight into slides." },
+      { title: "Pattern discovery", description: "See relationships you didn't know to ask about." },
+      { title: "Teaching & reviews", description: "Standard EDA visuals every analyst recognizes." },
+    ],
+    faq: [
+      { q: "Can I customize the figures?", a: "Figures are chosen automatically to cover the standard EDA canon. Customize downstream by exporting the analysis JSON and data." },
+      { q: "Do figures update when I add data?", a: "Re-run the analysis on the updated file and every figure regenerates from the new numbers." },
+    ],
+  },
+  chat: {
+    slug: "chat",
+    eyebrow: "Product · Chat with data",
+    title: "Ask anything. Get answers with real numbers.",
+    description:
+      "Questions in plain language, answers grounded in the verified statistics of your dataset — with the AI unable to invent figures that contradict your file.",
+    cta: { label: "Ask your first question", href: "/agent" },
+    rows: [
+      {
+        title: "Grounded in your file",
+        description:
+          "Your dataset's full statistics ride along with every question. The model explains, compares, and interprets — always citing the computed numbers.",
+        bullets: ["Verified stats in every answer", "No invented figures", "Follow-ups keep full context"],
         visual: "chat",
       },
       {
-        title: "Always current",
+        title: "Quick or Deep — your call",
         description:
-          "New models are added as they arrive. Your workspace evolves with the model landscape without changing how you work.",
-        bullets: ["New models added continuously", "Clear notes on what changed", "No workflow retraining"],
+          "The Quick mode gives you the key findings in under 250 words. Deep mode runs a comprehensive EDA narrative with segments, caveats, and next steps.",
+        bullets: ["One-click mode toggle", "Deep runs full EDA narration", "Router picks the right model either way"],
         visual: "routing",
       },
-    ],
-    capabilities: [
-      { title: "GPT family", description: "Fast, versatile reasoning and high-volume extraction." },
-      { title: "Claude family", description: "Careful long-form reasoning and nuanced drafting." },
-      { title: "Gemini family", description: "Very long context for filings and document sets." },
-      { title: "DeepSeek & Qwen", description: "Strong numeric and analytical performance." },
-    ],
-    useCases: [
-      { title: "Model comparison", description: "Run the same variance question across models and compare answers." },
-      { title: "Right tool per task", description: "Extraction on GPT, synthesis on Gemini, drafting on Claude." },
-      { title: "Cost awareness", description: "Route routine work to efficient models automatically." },
-    ],
-    faq: [
-      { q: "Do all plans include all models?", a: "Free includes standard models; Pro and Max include premium models across all five families." },
-      { q: "Can I bring my own API keys?", a: "Not yet — model access is bundled with your Fintra plan. Enterprise can discuss dedicated capacity." },
-    ],
-  },
-  analysis: {
-    slug: "analysis",
-    eyebrow: "Product · Financial analysis",
-    title: "Answers with real numbers — and the sources to prove it.",
-    description:
-      "Ask in plain language. Get analysis-grade answers grounded in your documents, with every figure traced to a source you can open.",
-    cta: { label: "Start analyzing", href: "/signup" },
-    rows: [
       {
-        title: "Variance analysis that finds drivers",
+        title: "Save the good ones",
         description:
-          "Compare actuals vs. budget vs. prior period. Fintra identifies the drivers behind the deltas and drafts the commentary.",
-        bullets: ["Price, volume, mix decomposition", "Driver ranking by impact", "Commentary drafted with citations"],
-        visual: "chart",
-      },
-      {
-        title: "Ratio and trend analysis",
-        description:
-          "Margins, working capital, runway, coverage — tracked over time and explained in context, not in a vacuum.",
-        bullets: ["Trend and cohort views", "Peer and prior-period comparisons", "Anomaly flags worth your attention"],
-        visual: "chart",
-      },
-      {
-        title: "Assumptions made explicit",
-        description:
-          "When Fintra assumes, it says so. Every analysis states what it assumed, so review is about substance, not detective work.",
-        bullets: ["Explicit assumption listing", "One-click sensitivity checks", "Reviewer-friendly output format"],
+          "Any answer can be copied, exported with the transcript, or turned into part of a report — analysis that survives the conversation.",
+        bullets: ["Copy any answer", "Export full transcripts", "Answers feed the report builder"],
         visual: "report",
       },
     ],
     capabilities: [
-      { title: "Document Q&A", description: "Interrogate statements, filings, and models directly." },
-      { title: "Scenario comparison", description: "Side-by-side scenarios with consistent structure." },
-      { title: "Numeric consistency checks", description: "Cross-foot totals, catch broken links and stale figures." },
-      { title: "Exhibit generation", description: "Clean, presentation-ready tables from raw data." },
+      { title: "Dataset-aware answers", description: "Statistics injected as ground truth for the model." },
+      { title: "Streaming responses", description: "Watch the analysis build in real time." },
+      { title: "Multi-turn context", description: "Follow-up questions remember the thread." },
+      { title: "Fallback reliability", description: "If a model fails, the router tries the next automatically." },
     ],
     useCases: [
-      { title: "FP&A reviews", description: "Monthly variance packs with drivers, not just deltas." },
-      { title: "Audit support", description: "Trace figures and test consistency across documents." },
-      { title: "Deal analysis", description: "Quality-of-earnings style checks on target financials." },
+      { title: "\"What's driving this?\"", description: "Segment comparisons and correlations, explained." },
+      { title: "\"Is this data clean?\"", description: "Quality findings summarized with fixes." },
+      { title: "\"Write this up\"", description: "Narratives that flow into the report builder." },
     ],
     faq: [
-      { q: "Does Fintra invent numbers?", a: "No. Analysis is grounded in the documents you provide, and answers cite their sources. If a figure can't be traced, Fintra says so." },
-      { q: "What file types work?", a: "Spreadsheets (Excel, CSV), PDFs, and slide decks — tables and structure are preserved." },
+      { q: "Can the model hallucinate statistics?", a: "The prompt constrains the model to the verified statistics; it explains rather than computes. Figures shown are always engine-computed." },
+      { q: "What if I don't have a dataset?", a: "Chat still works for methodology questions — and the AI will prompt you to attach a file when numbers are needed." },
     ],
   },
   reports: {
     slug: "reports",
     eyebrow: "Product · Report builder",
-    title: "From analysis to boardroom, in one flow.",
+    title: "From analysis to deliverable, in one click.",
     description:
-      "Turn any analysis into reports, decks, and memos — formatted to your team's standard, consistent with your numbers, ready to present.",
-    cta: { label: "Build your first report", href: "/signup" },
+      "Turn any analysis into a structured report — executive summary, findings, relationships, caveats, next steps — and export it as Markdown.",
+    cta: { label: "Generate a report", href: "/agent" },
     rows: [
       {
-        title: "Generate from your analysis",
+        title: "Sections you control",
         description:
-          "Reports build directly from conversations and analyses — the numbers, sources, and charts carry over. No retyping, no stale figures.",
-        bullets: ["One-click report from any thread", "Charts and exhibits generated for you", "Numbers stay consistent end to end"],
+          "Toggle the sections you need — executive summary, data overview, quality, key findings, relationships, risks, next steps — and generate.",
+        bullets: ["Pick your sections", "Consistent structure every time", "Numbers stay consistent with the EDA"],
         visual: "report",
       },
       {
-        title: "Templates your team standardizes on",
+        title: "Synthesized from verified stats",
         description:
-          "Define the monthly pack once. Every period's report follows the same structure — so readers always know where to look.",
-        bullets: ["Reusable finance templates", "Consistent structure period over period", "Team-wide template library"],
+          "Reports are written from the engine's statistics — the same figures shown in Analysis — so the narrative and the evidence never diverge.",
+        bullets: ["Generated from computed stats", "No invented numbers", "Deterministic fallback without AI"],
         visual: "workflow",
       },
       {
-        title: "Present with confidence",
+        title: "Export anywhere",
         description:
-          "Deck-ready output with exhibits that match the analysis. Last-minute board changes stop being a fire drill.",
-        bullets: ["Deck and document formats", "Exhibit numbering handled", "Export to PDF or slides"],
+          "Download the report as Markdown, the statistics as CSV, the analysis as JSON — ready for docs, wikis, or whatever your team reads.",
+        bullets: [".md reports", ".csv summary stats", ".json full analysis"],
         visual: "chart",
       },
     ],
     capabilities: [
-      { title: "Board packs", description: "Executive summary, exhibits, and appendices in one pass." },
-      { title: "Variance memos", description: "Driver commentary with cited exhibits." },
-      { title: "Investment memos", description: "Structured memos from research and models." },
-      { title: "Investor updates", description: "Consistent monthly and quarterly formats." },
+      { title: "Section picker", description: "Choose exactly the sections your deliverable needs." },
+      { title: "Markdown output", description: "Clean GitHub-flavored markdown, ready to paste." },
+      { title: "Saved library", description: "Reports persist with the thread for later export." },
+      { title: "AI or deterministic", description: "With an API key the LLM writes; without it, the engine still produces a full report." },
     ],
     useCases: [
-      { title: "Board reporting", description: "The monthly pack, assembled from live analysis." },
-      { title: "Management reporting", description: "Department-level reporting without the copy-paste." },
-      { title: "Client deliverables", description: "Advisory outputs in your firm's format." },
+      { title: "Weekly reporting", description: "Fresh data in, consistent report out." },
+      { title: "Stakeholder updates", description: "Executive summary plus evidence, every time." },
+      { title: "Documentation", description: "Attach the analysis record to your project docs." },
     ],
     faq: [
-      { q: "Can I edit generated reports?", a: "Yes — every report is editable before export. Fintra drafts; you keep editorial control." },
-      { q: "Do reports stay updated when numbers change?", a: "You can refresh a report from its source analysis, so updates are deliberate and reviewable." },
+      { q: "Can I edit generated reports?", a: "Yes — reports are Markdown. Download and edit anywhere, or regenerate with different sections." },
+      { q: "Does a report need an API key?", a: "No. Without a key, the deterministic engine writes the report from verified stats. With a key, the LLM adds narrative depth." },
     ],
   },
-  agents: {
-    slug: "agents",
-    eyebrow: "Product · Finance agents",
-    title: "Recurring finance tasks that run themselves.",
+  models: {
+    slug: "models",
+    eyebrow: "Product · Multi-model AI",
+    title: "Every leading model. One workspace.",
     description:
-      "Define the task once — variance memos, forecast refreshes, close checklists — and Fintra's agents run it every period, with output ready for your review.",
-    cta: { label: "Set up your first agent", href: "/signup" },
+      "DeepSeek, Llama, Gemini, Qwen, GPT, and Claude — via OpenRouter. Free models included by default; pick per task or let the router decide.",
+    cta: { label: "Try the models", href: "/agent" },
     rows: [
       {
-        title: "Agents with defined outputs",
+        title: "Free by default",
         description:
-          "Each agent produces a concrete deliverable: a memo, an updated forecast, an exhibit pack. Not vague summaries — reviewable work product.",
-        bullets: ["Variance Agent → memo + exhibits", "Forecast Agent → updated model + assumptions", "Close Agent → checklist + documentation"],
-        visual: "agent",
+          "A curated set of capable free models — DeepSeek V3.1, Llama 3.3, Gemini Flash, Qwen, Mistral — handles most analysis work at zero cost.",
+        bullets: ["10+ free models", "No key needed for EDA figures", "Free tier is genuinely useful"],
+        visual: "models",
       },
       {
-        title: "You stay in control",
+        title: "Frontier when it matters",
         description:
-          "Agents draft; you approve. Nothing is sent or published without review, and every run is logged with its inputs and outputs.",
-        bullets: ["Draft-then-approve workflow", "Full run history", "One-click refine and rerun"],
-        visual: "workflow",
+          "Add an OpenRouter key to unlock GPT-4o, Claude, Gemini Pro, and reasoning models — same workspace, same grounding, stronger narration.",
+        bullets: ["Bring your own key", "Paid models clearly labeled", "Key stays server-side"],
+        visual: "chat",
       },
       {
-        title: "Consistent period over period",
+        title: "Consistent context across models",
         description:
-          "Because agents follow your definition, December's memo looks like October's — comparability without manual effort.",
-        bullets: ["Same structure every period", "Prior-period comparisons built in", "Institutional memory that persists"],
-        visual: "report",
+          "Your dataset stats, thread history, and mode carry across models — switching never means re-explaining the work.",
+        bullets: ["Shared dataset grounding", "Full thread history travels", "No copy-paste between tools"],
+        visual: "routing",
       },
     ],
     capabilities: [
-      { title: "Variance Agent", description: "Actuals vs. budget vs. prior, with drafted commentary." },
-      { title: "Forecast Agent", description: "Rolling forecast refresh with tracked assumptions." },
-      { title: "Close Agent", description: "Checklist progression and documentation organization." },
-      { title: "Custom agents", description: "Define your own recurring finance deliverable." },
+      { title: "Reasoning models", description: "DeepSeek R1 and o3-mini for multi-step statistical thinking." },
+      { title: "Fast models", description: "Gemini Flash and Mistral for quick lookups." },
+      { title: "Long context", description: "Up to 1M-token windows for wide datasets." },
+      { title: "Code models", description: "Qwen Coder for pandas and SQL translations." },
     ],
     useCases: [
-      { title: "Monthly reporting", description: "Memo, exhibits, and summary drafted before you're in the office." },
-      { title: "Forecast cycles", description: "Refreshes that keep assumptions consistent." },
-      { title: "Close support", description: "Documentation organized as the close progresses." },
+      { title: "Cost-conscious teams", description: "Free models for volume, frontier for finals." },
+      { title: "Model comparison", description: "Ask the same question across models." },
+      { title: "Right tool per task", description: "Speed for lookups, reasoning for analysis." },
     ],
     faq: [
-      { q: "Do agents act without approval?", a: "No. Agents produce drafts for your review. Outbound actions would always require explicit approval." },
-      { q: "How often can agents run?", a: "Free includes 3 agent runs per day; Pro and Max include unlimited runs." },
-    ],
-  },
-  workflows: {
-    slug: "workflows",
-    eyebrow: "Product · Automated workflows",
-    title: "Pipelines for close, forecast, and reporting.",
-    description:
-      "Chain analyses, reports, and agents into workflows that mirror your finance calendar — and let the routine work run on rails.",
-    cta: { label: "Automate your calendar", href: "/signup" },
-    rows: [
-      {
-        title: "Model your finance calendar",
-        description:
-          "Close on day 3, variance memo on day 4, board pack on day 10. Workflows encode the sequence — and run it on schedule.",
-        bullets: ["Scheduled triggers", "Step-by-step pipelines", "Hand-offs between steps"],
-        visual: "workflow",
-      },
-      {
-        title: "Reviews at the right moments",
-        description:
-          "Workflows pause for human review where you want it. Approve, adjust, and continue — automation with judgment.",
-        bullets: ["Approval gates", "Reviewer comments", "Alerts when inputs are late"],
-        visual: "agent",
-      },
-      {
-        title: "Visibility into every run",
-        description:
-          "Each run is logged: what ran, when, on what inputs, producing what outputs. Audit-friendly by design.",
-        bullets: ["Run history and logs", "Input/output snapshots", "Failed-step alerts and retries"],
-        visual: "chart",
-      },
-    ],
-    capabilities: [
-      { title: "Close workflow", description: "Checklist, reconciliations, and documentation in sequence." },
-      { title: "Forecast workflow", description: "Data refresh, model update, and summary generation." },
-      { title: "Board-pack workflow", description: "Exhibits, summary, and deck assembly each period." },
-      { title: "Custom workflows", description: "Compose steps from any Fintra capability." },
-    ],
-    useCases: [
-      { title: "Month-end close", description: "A calm close with the routine work automated." },
-      { title: "Quarterly board cycle", description: "The pack builds itself from live numbers." },
-      { title: "Annual planning", description: "Templates and analyses ready before planning starts." },
-    ],
-    faq: [
-      { q: "Do workflows replace our ERP?", a: "No — Fintra complements your systems. Workflows orchestrate analysis and reporting work, not transaction processing." },
-      { q: "What happens if a step fails?", a: "The run pauses, you're alerted, and you can retry or adjust. Nothing continues silently on bad inputs." },
+      { q: "Do I need an OpenRouter key?", a: "Not for the EDA engine, figures, or deterministic reports. A key adds AI narration; free models work with a free OpenRouter key." },
+      { q: "Where does my key live?", a: "Server-side only — set OPENROUTER_API_KEY in your environment and it never reaches the browser." },
     ],
   },
   "model-routing": {
     slug: "model-routing",
-    eyebrow: "Product · Model routing",
-    title: "The right model for every task, automatically.",
+    eyebrow: "Product · Smart routing",
+    title: "The right model for every question, automatically.",
     description:
-      "Fintra routes each task — extraction, reasoning, synthesis, numeric checking — to the model that handles it best. You see the result, and the routing decision.",
-    cta: { label: "See routing in action", href: "/signup" },
+      "Auto mode profiles each question — length, complexity, dataset presence — and routes to the best model, with automatic failover when a model is busy.",
+    cta: { label: "See routing in action", href: "/agent" },
     rows: [
       {
-        title: "Routing by task profile",
+        title: "Routing by task shape",
         description:
-          "Every task has a shape: token count, reasoning depth, latency needs. Fintra profiles it and picks the model accordingly.",
-        bullets: ["Long documents → long-context models", "Precision checks → high-accuracy models", "Bulk extraction → fast, efficient models"],
+          "Short factual queries go to fast models. Words like 'explain', 'correlate', or 'forecast' — or Deep mode — escalate to reasoning models.",
+        bullets: ["Complexity heuristics", "Effort mode respected", "Dataset-aware escalation"],
         visual: "routing",
       },
       {
-        title: "Transparency, not magic",
+        title: "Failover built in",
         description:
-          "Routing decisions are visible: which model ran, and why. Override any time — set a fixed model for a project or task type.",
-        bullets: ["Visible model per step", "Manual overrides respected", "Routing notes in run history"],
-        visual: "models",
+          "Rate limits, credit errors, and outages trigger automatic retry on the next model in the chain — your analysis doesn't stall because one endpoint hiccuped.",
+        bullets: ["Ordered fallback chain", "429/402/5xx handled", "Auth errors surfaced clearly"],
+        visual: "workflow",
       },
       {
-        title: "Cost-aware by default",
+        title: "Transparent decisions",
         description:
-          "Premium models for work that needs them; efficient models for volume work. Quality where it matters, cost control everywhere else.",
-        bullets: ["Task-cost estimation", "Efficient defaults for routine work", "Spend visibility for teams"],
-        visual: "chart",
+          "You see which model answered and what the chain was — routing is a tool, not a black box.",
+        bullets: ["Model shown per answer", "Chain visible in the picker", "Manual pinning respected"],
+        visual: "models",
       },
     ],
     capabilities: [
-      { title: "Automatic routing", description: "Default behavior — no configuration required." },
-      { title: "Project-level overrides", description: "Pin a model for specific projects or task types." },
-      { title: "Routing transparency", description: "See which model ran and the reasoning." },
-      { title: "Cost controls", description: "Efficient routing profiles for high-volume work." },
+      { title: "Auto (Smart Router)", description: "The default — no configuration needed." },
+      { title: "Free Models Router", description: "Load-balances across available free models." },
+      { title: "Manual override", description: "Pin any model for the thread when you prefer." },
+      { title: "Cost awareness", description: "Free-first routing keeps token spend near zero." },
     ],
     useCases: [
-      { title: "Mixed workloads", description: "Extraction, analysis, and drafting in one team." },
-      { title: "Cost-sensitive teams", description: "Predictable spend without model micromanagement." },
-      { title: "Quality-critical work", description: "Pin your best reasoning model to the work that matters." },
+      { title: "Mixed workloads", description: "Lookups and deep dives in one thread." },
+      { title: "High reliability", description: "Analysis that survives provider hiccups." },
+      { title: "Zero-budget projects", description: "Free routing with frontier fallback optional." },
     ],
     faq: [
-      { q: "Can I always choose the model myself?", a: "Yes — routing is the default, not a constraint. Pick any model manually whenever you prefer." },
-      { q: "Does routing cost extra?", a: "Routing is included. Advanced routing profiles are on Max and Enterprise." },
+      { q: "Can I always choose the model myself?", a: "Yes — Auto is the default, not a constraint. Pick any model from the catalog and it's used directly." },
+      { q: "Does routing cost extra?", a: "No. Routing is built in. Model costs follow your OpenRouter plan — free models cost nothing." },
     ],
   },
 };
@@ -400,7 +399,7 @@ export default async function ProductFeaturePage({
               {feature.cta.label}
             </a>
             <a href="/contact" className="inline-flex h-11 items-center rounded-full border border-line-strong px-6 text-[15px] font-medium text-ink hover:bg-paper-deep">
-              Talk to sales
+              Talk to us
             </a>
           </>
         }
@@ -493,8 +492,9 @@ export default async function ProductFeaturePage({
       </section>
 
       <CtaBand
-        title={feature.cta.label + " — free to start."}
-        description="Set up takes minutes. Upgrade when the work demands it."
+        title="Open the workspace — it's free."
+        description="No signup. Upload a dataset and read the analysis in minutes."
+        primary={{ label: "Open workspace", href: "/agent" }}
         secondary={{ label: "View pricing", href: "/pricing" }}
       />
     </PageShell>
@@ -509,8 +509,8 @@ function ProductVisual({ kind }: { kind: string }) {
         <div className="rounded-[var(--radius-card)] border border-line bg-surface p-5 shadow-[var(--shadow-card)]">
           <div className="space-y-3">
             {[
-              ["You", "What drove the margin change in Q3?"],
-              ["Fintra", "COGS per unit rose 4.1% from supplier mix; mid-tier discounting added 60bps of pressure. Sources: Q3 P&L, pricing sheet v3."],
+              ["You", "Which segment has the highest average order value?"],
+              ["DataLens", "South: $96.40 avg — 22% above North ($79.10). Driven by Widget B mix (61% of South volume). Figures: group means by region, n=12,480."],
             ].map(([who, msg]) => (
               <div key={who} className={`rounded-xl px-4 py-3 text-[13.5px] leading-relaxed ${who === "You" ? "bg-paper text-ink-soft" : "bg-copper-soft text-ink"}`}>
                 <p className="mb-1 font-mono text-[10.5px] uppercase tracking-wider text-ink-faint">{who}</p>
@@ -523,7 +523,7 @@ function ProductVisual({ kind }: { kind: string }) {
     case "models":
       return (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {["GPT", "Claude", "Gemini", "DeepSeek", "Qwen", "+ more"].map((m) => (
+          {["DeepSeek", "Llama", "Gemini", "Qwen", "GPT", "Claude"].map((m) => (
             <div key={m} className="grid h-20 place-items-center rounded-[var(--radius-card)] border border-line bg-surface text-[14px] font-medium text-ink">
               {m}
             </div>
@@ -534,20 +534,20 @@ function ProductVisual({ kind }: { kind: string }) {
       return (
         <div className="rounded-[var(--radius-card)] border border-line bg-surface p-5 shadow-[var(--shadow-card)]">
           <div className="flex items-center justify-between">
-            <p className="text-[13px] font-medium text-ink">Operating margin</p>
-            <span className="font-mono text-[11px] text-sage">24.8%</span>
+            <p className="text-[13px] font-medium text-ink">revenue distribution</p>
+            <span className="font-mono text-[11px] text-sage">σ 214.6</span>
           </div>
           <div className="mt-3">
-            <AreaChart points={[19.2, 20.1, 20.8, 21.9, 22.4, 23.5, 24.1, 24.8]} height={110} />
+            <AreaChart points={[8, 14, 22, 34, 41, 38, 30, 24, 16, 11, 7, 4]} height={110} />
           </div>
         </div>
       );
     case "report":
       return (
         <div className="rounded-[var(--radius-card)] border border-line bg-surface p-5 shadow-[var(--shadow-card)]">
-          <p className="font-mono text-[11px] text-ink-faint">Q3-Board-Summary.pdf</p>
+          <p className="font-mono text-[11px] text-ink-faint">analysis-report.md</p>
           <div className="mt-3 space-y-2.5">
-            {["Executive summary", "Revenue & margin exhibits", "Variance commentary", "Outlook & asks"].map((s, i) => (
+            {["Executive summary", "Data overview", "Key findings", "Next steps"].map((s, i) => (
               <div key={s} className="flex items-center justify-between rounded-lg border border-line px-3.5 py-2.5 text-[13px] text-ink-soft">
                 <span>{i + 1}. {s}</span>
                 <span className="font-mono text-[10.5px] text-sage">ready</span>
@@ -560,15 +560,15 @@ function ProductVisual({ kind }: { kind: string }) {
       return (
         <div className="rounded-[var(--radius-card)] border border-line bg-surface p-5 shadow-[var(--shadow-card)]">
           <div className="flex items-center justify-between">
-            <p className="text-[13px] font-medium text-ink">Variance Agent</p>
-            <span className="rounded-full bg-sage-soft px-2.5 py-0.5 font-mono text-[10.5px] text-sage">monthly</span>
+            <p className="text-[13px] font-medium text-ink">EDA engine</p>
+            <span className="rounded-full bg-sage-soft px-2.5 py-0.5 font-mono text-[10.5px] text-sage">automatic</span>
           </div>
           <div className="mt-3 space-y-2 font-mono text-[11.5px]">
             {[
-              ["input", "Q3 actuals, budget, prior period"],
-              ["step 1", "decompose variance by driver"],
-              ["step 2", "draft commentary + exhibits"],
-              ["output", "variance memo · ready for review"],
+              ["input", "sales-2024.csv · 12,480 rows"],
+              ["step 1", "type inference + parse"],
+              ["step 2", "stats, outliers, correlations"],
+              ["output", "14 figures · 6 findings"],
             ].map(([k, v]) => (
               <div key={k} className="flex gap-3 rounded-lg bg-paper px-3 py-2">
                 <span className="w-14 shrink-0 text-ink-faint">{k}</span>
@@ -581,9 +581,9 @@ function ProductVisual({ kind }: { kind: string }) {
     case "workflow":
       return (
         <div className="rounded-[var(--radius-card)] border border-line bg-surface p-5 shadow-[var(--shadow-card)]">
-          <p className="text-[13px] font-medium text-ink">Close workflow</p>
+          <p className="text-[13px] font-medium text-ink">Analysis pipeline</p>
           <div className="mt-3 space-y-0">
-            {["Data refresh", "Reconciliation checks", "Variance analysis", "Report draft", "Your review"].map((step, i, arr) => (
+            {["Parse & type inference", "Quality scoring", "Figures generated", "AI narration", "Your export"].map((step, i, arr) => (
               <div key={step} className="flex items-start gap-3">
                 <div className="flex flex-col items-center">
                   <span className={`size-2.5 rounded-full ${i < arr.length - 1 ? "bg-copper" : "bg-sage"}`} />
@@ -601,10 +601,10 @@ function ProductVisual({ kind }: { kind: string }) {
           <p className="font-mono text-[11px] text-ink-faint">routing decisions</p>
           <div className="mt-3 space-y-2">
             {[
-              ["Invoice extraction ×400", "GPT"],
-              ["Filings synthesis", "Gemini"],
-              ["Variance commentary", "Claude"],
-              ["Numeric checks", "Qwen"],
+              ["\"how many rows?\"", "Gemini Flash"],
+              ["\"explain correlation\"", "DeepSeek R1"],
+              ["\"write the report\"", "Claude"],
+              ["\"pandas snippet\"", "Qwen Coder"],
             ].map(([task, model]) => (
               <div key={task} className="flex items-center justify-between rounded-lg border border-line px-3.5 py-2.5">
                 <span className="text-[13px] text-ink-soft">{task}</span>

@@ -6,7 +6,7 @@ import { getAuthAccount } from "@/lib/auth";
 
 export const metadata: Metadata = {
   title: "Create your account",
-  description: "Create your Fintra account and start working with numbers.",
+  description: "Create your DataLens account and start working with numbers.",
   robots: { index: false },
 };
 

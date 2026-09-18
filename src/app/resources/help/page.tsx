@@ -8,7 +8,7 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Help center",
-  description: "Answers about Fintra accounts, billing, workspace, and data.",
+  description: "Answers about DataLens accounts, billing, workspace, and data.",
   path: "/resources/help",
 });
 
@@ -16,8 +16,9 @@ const CATEGORIES = [
   {
     title: "Getting started",
     items: [
-      ["How do I create an account?", "Choose Start free anywhere on this site, enter your email, and pick a password. Your workspace is ready immediately on the Free plan."],
-      ["Do I need a credit card?", "No. The Free plan includes workspace access with standard models and daily agent runs — no card required."],
+      ["Do I need an account?", "No. The workspace at /agent is open — open it and start analyzing. An account is only needed for billing and settings."],
+      ["How do I analyze a file?", "Open the workspace, drag in a CSV, TSV, or JSON file (or paste raw data), and the full EDA runs automatically. Then ask questions in chat."],
+      ["Which AI models are included?", "A set of capable free models is included by default via smart routing. Add an OpenRouter key to unlock frontier models like GPT, Claude, and Gemini Pro."],
     ],
   },
   {
@@ -30,8 +31,9 @@ const CATEGORIES = [
   {
     title: "Workspace & data",
     items: [
-      ["Where is my data stored?", "Workspace content lives in your account's workspace storage and is not used for model training. See the Security page for details."],
-      ["Can I export my work?", "Yes — reports, tables, and conversations can be exported from the workspace."],
+      ["Where is my data stored?", "Threads and datasets are stored per-browser in the workspace storage, private to your session, and are not used for model training. See the Security page for details."],
+      ["Can I export my work?", "Yes — the full analysis as JSON, summary statistics as CSV, reports and transcripts as Markdown."],
+      ["What file types are supported?", "CSV, TSV, and JSON (including column-oriented JSON), up to 6 MB. Delimiters, currency formats, and missing-value conventions are detected automatically."],
     ],
   },
 ];

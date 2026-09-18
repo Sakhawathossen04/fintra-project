@@ -46,7 +46,7 @@ export default async function PaymentSuccessPage({
           <div className="mt-6 rounded-xl border border-line bg-paper px-4 py-3.5 text-left">
             <div className="flex items-center justify-between text-[13px]">
               <span className="text-ink-mute">Plan</span>
-              <span className="font-medium text-ink">Fintra {plan.name}</span>
+              <span className="font-medium text-ink">DataLens {plan.name}</span>
             </div>
             {account && (
               <div className="mt-2 flex items-center justify-between text-[13px]">

@@ -10,8 +10,8 @@ export function PlanCards({ authed }: { authed: boolean }) {
 
   function planHref(id: string) {
     if (id === "enterprise") return "/contact";
-    if (id === "free") return authed ? "/checkout?plan=free" : "/signup?redirect=/checkout?plan=free";
-    return authed ? `/checkout?plan=${id}` : `/signup?redirect=${encodeURIComponent(`/checkout?plan=${id}`)}`;
+    if (id === "free") return "/agent"; // the workspace is open — no checkout
+    return authed ? `/checkout?plan=${id}` : `/login?redirect=${encodeURIComponent(`/checkout?plan=${id}`)}`;
   }
 
   return (
@@ -94,7 +94,7 @@ export function PlanCards({ authed }: { authed: boolean }) {
                     : "border border-line-strong text-ink hover:bg-paper-deep"
                 }`}
               >
-                {id === "enterprise" ? "Contact sales" : id === "free" ? "Start free" : `Choose ${plan.name}`}
+                {id === "enterprise" ? "Contact sales" : id === "free" ? "Open workspace" : `Choose ${plan.name}`}
               </Link>
             </div>
           );

@@ -6,9 +6,9 @@ import { SectionHeading, Eyebrow } from "@/components/ui/Brand";
 import { pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
-  title: "Fintra API",
+  title: "DataLens API",
   description:
-    "The Fintra API will provide programmatic access to analyses and reports. See the planned surface and register interest.",
+    "The DataLens API will provide programmatic access to analyses and reports. See the planned surface and register interest.",
   path: "/developers/api",
 });
 
@@ -17,8 +17,8 @@ export default function ApiPage() {
     <PageShell>
       <PageHero
         eyebrow="Developers · API"
-        title="The Fintra API."
-        description="Programmatic access to the Finance AI workspace — run analyses, generate reports, and retrieve outputs from your own systems. In design, with early access planned."
+        title="The DataLens API."
+        description="Programmatic access to the AI analysis workspace — run analyses, generate reports, and retrieve outputs from your own systems. In design, with early access planned."
         actions={
           <a href="/contact" className="inline-flex h-11 items-center rounded-full bg-copper px-6 text-[15px] font-medium text-white hover:bg-copper-strong">
             Register interest
@@ -34,7 +34,7 @@ export default function ApiPage() {
                 A small, sharp API.
               </h2>
               <p className="mt-4 text-[15.5px] leading-relaxed text-ink-mute">
-                The first version targets the highest-leverage operations finance teams
+                The first version targets the highest-leverage operations data teams
                 automate first. The shape below is the current design direction.
               </p>
               <ul className="mt-7 space-y-3.5">
@@ -57,7 +57,7 @@ export default function ApiPage() {
                   <span className="font-mono text-[11px] text-paper/40">planned example</span>
                   <span className="rounded-full bg-white/10 px-2 py-0.5 font-mono text-[10px] text-paper/60">v0 design</span>
                 </div>
-                <pre className="overflow-x-auto p-5 font-mono text-[12px] leading-relaxed text-paper/80"><code>{`curl https://api.fintra.example.com/v1/analyses \\
+                <pre className="overflow-x-auto p-5 font-mono text-[12px] leading-relaxed text-paper/80"><code>{`curl https://api.datalens.example.com/v1/analyses \\
   -H "Authorization: Bearer $FINTRA_API_KEY" \\
   -d '{
     "project": "q3-close",

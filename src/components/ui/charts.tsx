@@ -1,4 +1,4 @@
-/** Small SVG primitives for finance visuals — no chart library, fully static HTML. */
+/** Small SVG primitives for analysis visuals — no chart library, fully static HTML. */
 
 export function AreaChart({
   points,

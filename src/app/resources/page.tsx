@@ -6,14 +6,14 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Resources",
-  description: "Guides, templates, security, and help for Fintra users.",
+  description: "Guides, templates, security, and help for DataLens users.",
   path: "/resources",
 });
 
 const CARDS = [
-  { title: "Guides", href: "/resources/guides", desc: "Practical playbooks for finance AI work." },
-  { title: "Templates", href: "/resources/templates", desc: "Start from proven finance formats." },
-  { title: "Security", href: "/resources/security", desc: "How Fintra protects your data." },
+  { title: "Guides", href: "/resources/guides", desc: "Practical playbooks for data work." },
+  { title: "Templates", href: "/resources/templates", desc: "Start from proven analysis formats." },
+  { title: "Security", href: "/resources/security", desc: "How DataLens protects your data." },
   { title: "Help center", href: "/resources/help", desc: "Answers and support." },
 ];
 
@@ -22,7 +22,7 @@ export default function ResourcesPage() {
     <PageShell>
       <PageHero
         eyebrow="Resources"
-        title="Get more from Fintra."
+        title="Get more from DataLens."
         description="Playbooks, templates, and answers — built with the same care as the product."
       />
       <section className="border-b border-line">
@@ -45,7 +45,7 @@ export default function ResourcesPage() {
         </div>
       </section>
       <CtaBand
-        title="Start putting Fintra to work."
+        title="Start putting DataLens to work."
         description="Free to try, minutes to set up."
         secondary={{ label: "View pricing", href: "/pricing" }}
       />

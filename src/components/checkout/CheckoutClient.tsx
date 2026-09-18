@@ -59,7 +59,7 @@ export default function CheckoutClient({
 
             <div className="mt-6 flex items-start justify-between gap-4 rounded-xl border border-line bg-paper p-5">
               <div>
-                <p className="text-[15px] font-semibold text-ink">Fintra {plan.name}</p>
+                <p className="text-[15px] font-semibold text-ink">DataLens {plan.name}</p>
                 <p className="mt-0.5 text-[13px] text-ink-mute">{plan.tagline}</p>
               </div>
               <p className="whitespace-nowrap text-[15px] font-semibold text-ink">
@@ -213,7 +213,7 @@ export default function CheckoutClient({
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-faint">
             What's included
           </p>
-          <p className="mt-2 text-[15px] font-semibold text-ink">Fintra {plan.name}</p>
+          <p className="mt-2 text-[15px] font-semibold text-ink">DataLens {plan.name}</p>
           <ul className="mt-4 space-y-2.5">
             {plan.features.map((f) => (
               <li key={f} className="flex items-start gap-2.5 text-[13.5px] text-ink-soft">

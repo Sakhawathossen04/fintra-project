@@ -37,7 +37,7 @@ export function PageHero({
 export function CtaBand({
   title,
   description,
-  primary = { label: "Start using Fintra", href: "/signup" },
+  primary = { label: "Open the workspace", href: "/agent" },
   secondary,
 }: {
   title: string;

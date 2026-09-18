@@ -2,8 +2,14 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "functions": {
+    "src/app/api/agent/chat/route.ts": {
+      "maxDuration": 120
+    },
+    "src/app/api/agent/report/route.ts": {
+      "maxDuration": 120
+    },
     "src/app/api/**/*.ts": {
-      "maxDuration": 30
+      "maxDuration": 60
     }
   }
 }

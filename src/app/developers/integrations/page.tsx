@@ -8,7 +8,7 @@ import { pageMeta } from "@/lib/site";
 export const metadata: Metadata = pageMeta({
   title: "Integrations",
   description:
-    "How Fintra works with the tools finance teams use: file-based workflows today, native integrations planned.",
+    "How DataLens works with the tools data teams use: file-based workflows today, native integrations planned.",
   path: "/developers/integrations",
 });
 
@@ -20,7 +20,7 @@ const GROUPS = [
       ["Excel & CSV", "Upload spreadsheets and models; tables and structure are preserved."],
       ["PDF", "Statements, filings, and reports read with layout awareness."],
       ["Slide decks", "Presentations analyzed and generated as outputs."],
-      ["Any export", "If your system exports files, Fintra can work with them."],
+      ["Any export", "If your system exports files, DataLens can work with them."],
     ],
   },
   {
@@ -40,8 +40,8 @@ export default function IntegrationsPage() {
     <PageShell>
       <PageHero
         eyebrow="Developers · Integrations"
-        title="Fintra fits your stack."
-        description="Today, Fintra works with the files your systems already produce. Native integrations are on the roadmap — designed with transparency about what's live."
+        title="DataLens fits your stack."
+        description="Today, DataLens works with the files your systems already produce. Native integrations are on the roadmap — designed with transparency about what's live."
       />
       <section className="border-b border-line">
         <div className="mx-auto max-w-5xl px-5 py-16 sm:px-8">

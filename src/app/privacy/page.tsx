@@ -5,7 +5,7 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Privacy Policy",
-  description: "How Fintra collects, uses, and protects personal data.",
+  description: "How DataLens collects, uses, and protects personal data.",
   path: "/privacy",
 });
 
@@ -14,7 +14,7 @@ const SECTIONS: { h: string; ps: string[] }[] = [
     h: "What we collect",
     ps: [
       "Account data: your name, email address, and hashed password.",
-      "Workspace content: the files, conversations, and outputs you create in Fintra.",
+      "Workspace content: the files, conversations, and outputs you create in DataLens.",
       "Billing records: plan selections and billing events for your account.",
       "Contact submissions: what you send us through the contact form.",
     ],
@@ -23,7 +23,7 @@ const SECTIONS: { h: string; ps: string[] }[] = [
     h: "How we use it",
     ps: [
       "To operate the service: authenticate you, store your workspace, and process billing.",
-      "To communicate with you about your account and, only with a basis to do so, about Fintra.",
+      "To communicate with you about your account and, only with a basis to do so, about DataLens.",
       "We do not sell personal data. We do not use your workspace content to train AI models.",
     ],
   },
@@ -43,13 +43,13 @@ const SECTIONS: { h: string; ps: string[] }[] = [
     h: "Retention and deletion",
     ps: [
       "Workspace content persists while your account is active. You can export your content at any time; deleting your account removes content from active systems.",
-      "Billing records are retained as required for financial record-keeping.",
+      "Billing records are retained as required for record-keeping.",
     ],
   },
   {
     h: "Your rights and contact",
     ps: [
-      "Depending on your jurisdiction, you may have rights to access, correct, export, or delete your personal data. To exercise them or ask anything about this policy: hello@fintra.example.com.",
+      "Depending on your jurisdiction, you may have rights to access, correct, export, or delete your personal data. To exercise them or ask anything about this policy: hello@datalens.example.com.",
     ],
   },
 ];

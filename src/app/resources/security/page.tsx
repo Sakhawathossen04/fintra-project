@@ -7,7 +7,7 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Security",
-  description: "How Fintra handles, stores, and protects your financial data.",
+  description: "How DataLens handles, stores, and protects your datasets.",
   path: "/resources/security",
 });
 
@@ -51,8 +51,8 @@ export default function SecurityPage() {
     <PageShell>
       <PageHero
         eyebrow="Resources · Security"
-        title="Designed for confidential finance data."
-        description="Finance work demands confidentiality. Here is precisely how Fintra handles your data — and what we don't claim."
+        title="Designed for confidential data."
+        description="Data work demands confidentiality. Here is precisely how DataLens handles your data — and what we don't claim."
       />
 
       <section className="border-b border-line">
@@ -85,7 +85,7 @@ export default function SecurityPage() {
             <SectionHeading
               eyebrow="What we don't claim"
               title="An honest security page."
-              description="We don't display compliance badges we haven't earned. Certifications (such as SOC 2) are not claimed here; when Fintra achieves them, they will be listed with evidence. If a claim isn't on this page, treat it as not yet true — and ask us."
+              description="We don't display compliance badges we haven't earned. Certifications (such as SOC 2) are not claimed here; when DataLens achieves them, they will be listed with evidence. If a claim isn't on this page, treat it as not yet true — and ask us."
             />
           </Reveal>
         </div>

@@ -15,28 +15,28 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fintra.example.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://datalens.example.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Fintra — Finance AI Workspace",
-    template: "%s | Fintra",
+    default: "DataLens — Chat with your data. Analysis on autopilot.",
+    template: "%s | DataLens",
   },
   description:
-    "Fintra brings leading AI models, financial analysis, research, reporting, and recurring finance workflows into one professional workspace.",
+    "DataLens turns CSVs and JSON into complete analysis: automatic EDA, charts, and AI-narrated findings — no login, no notebook, no code.",
   openGraph: {
     type: "website",
-    siteName: "Fintra",
-    title: "Fintra — Finance AI Workspace",
+    siteName: "DataLens",
+    title: "DataLens — Chat with your data",
     description:
-      "Leading AI models, financial analysis, reporting, and finance agents — in one professional workspace.",
+      "Upload a dataset, get a full analysis: distributions, correlations, segments, and report-ready narratives.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fintra — Finance AI Workspace",
+    title: "DataLens — Chat with your data",
     description:
-      "Leading AI models, financial analysis, reporting, and finance agents — in one professional workspace.",
+      "Upload a dataset, get a full analysis: distributions, correlations, segments, and report-ready narratives.",
   },
   icons: {
     icon: [
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         url:
           "data:image/svg+xml," +
           encodeURIComponent(
-            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#17150f"/><path d="M10 22V10h12v3.2h-8.4v2.6h7.2V19h-7.2v3z" fill="#faf9f7"/></svg>`
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#17150f"/><path d="M9 22v-8m0 0 5 4.5M9 14l-4.5 4M23 10v8m0 0 5-4.5M23 18l-4.5-4" stroke="#faf9f7" stroke-width="2.6" stroke-linecap="round" fill="none"/></svg>`
           ),
       },
     ],

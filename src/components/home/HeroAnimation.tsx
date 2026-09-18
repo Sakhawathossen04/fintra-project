@@ -4,23 +4,23 @@ import { useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 /**
- * Original FINTRA finance animation:
- *   Phase 1 — live metrics tick up, analysis narration scrolls
+ * Original DataLens animation:
+ *   Phase 1 — dataset profiled, EDA narration scrolls
  *   Phase 2 — work is routed across AI models
  */
 const METRICS = [
-  { label: "Revenue", value: "$24.8M", delta: "+6.2%" },
-  { label: "Operating margin", value: "24.8%", delta: "+120 bps" },
-  { label: "Cash runway", value: "14.2 mo", delta: "+0.8" },
+  { label: "Rows profiled", value: "12,480", delta: "14 columns" },
+  { label: "Quality score", value: "96/100", delta: "0.4% missing" },
+  { label: "Figures drawn", value: "14", delta: "6 findings" },
 ];
 
 const STEPS = [
-  "Analyzing Q3 performance…",
-  "3 major variance drivers identified",
-  "Checking historical assumptions…",
-  "Forecast updated",
-  "Board summary generated",
-  "Consistency check complete",
+  "Parsing sales-2024.csv…",
+  "Type inference complete — 6 numeric, 4 categorical",
+  "Distribution + outlier analysis done",
+  "Correlation matrix computed",
+  "3 segment gaps identified",
+  "Analysis ready — ask anything",
 ];
 
 const MODELS = [
@@ -64,7 +64,7 @@ export default function HeroAnimation() {
           ))}
         </div>
         <div className="rounded-xl border border-line bg-surface p-4 text-[13px] text-ink-mute">
-          Board summary generated · Forecast updated · Consistency check complete
+          Correlation matrix computed · 3 segment gaps identified · Analysis ready
         </div>
       </div>
     );
@@ -76,7 +76,7 @@ export default function HeroAnimation() {
     <div aria-hidden className="overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface shadow-[var(--shadow-card)]">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
-        <span className="font-mono text-[11px] text-ink-faint">fintra · q3-review</span>
+        <span className="font-mono text-[11px] text-ink-faint">datalens · analysis</span>
         <span className="rounded-full bg-sage-soft px-2.5 py-0.5 font-mono text-[10px] text-sage">
           {phase === "analysis" ? "analysis" : "routing"}
         </span>
@@ -133,13 +133,13 @@ export default function HeroAnimation() {
                 />
                 <span className="text-[13px] font-medium text-ink">{m.name}</span>
                 <span className="ml-auto font-mono text-[10.5px] text-ink-faint">
-                  {["variance drivers", "forecast update", "board summary", "doc review", "consistency check"][i % 5]}
+                  {["quick lookups", "correlation analysis", "report drafting", "pandas help", "outlier triage"][i % 5]}
                 </span>
               </div>
             ))}
           </div>
           <p className="mt-4 text-center font-mono text-[11px] text-ink-faint">
-            Fintra routes each task to the model that does it best
+            DataLens routes each task to the model that does it best
           </p>
         </div>
       )}

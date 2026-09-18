@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 
-/** FINTRA wordmark + logo mark (original). */
+/** DataLens wordmark + lens mark (original). */
 export function Logo({ dark = false, size = "md" }: { dark?: boolean; size?: "sm" | "md" | "lg" }) {
   const dims = size === "lg" ? "text-[22px]" : size === "sm" ? "text-[17px]" : "text-[19px]";
   return (
     <Link
       href="/"
-      aria-label="Fintra home"
+      aria-label="DataLens home"
       className={`inline-flex items-center gap-2 ${dark ? "text-paper" : "text-ink"}`}
     >
       <span
@@ -17,10 +17,12 @@ export function Logo({ dark = false, size = "md" }: { dark?: boolean; size?: "sm
         }`}
       >
         <svg viewBox="0 0 24 24" className="size-[15px]" fill="none">
-          <path d="M6 18V7h5.5M6 12.5h8.5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+          <circle cx="10.5" cy="10.5" r="5.5" stroke="currentColor" strokeWidth="2.2" />
+          <path d="m15 15 5 5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+          <path d="M8.2 10.5h4.6M10.5 8.2v4.6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
         </svg>
       </span>
-      <span className={`font-semibold tracking-tight ${dims}`}>Fintra</span>
+      <span className={`font-semibold tracking-tight ${dims}`}>DataLens</span>
     </Link>
   );
 }

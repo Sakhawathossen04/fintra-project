@@ -8,7 +8,7 @@ import { pageMeta } from "@/lib/site";
 export const metadata: Metadata = pageMeta({
   title: "Documentation",
   description:
-    "Documentation for working with Fintra: workspace concepts, models, analysis, reports, agents, and workflows.",
+    "Documentation for working with DataLens: workspace concepts, models, analysis, reports, agents, and workflows.",
   path: "/developers/docs",
 });
 
@@ -55,7 +55,7 @@ export default function DocsPage() {
     <PageShell>
       <PageHero
         eyebrow="Developers · Documentation"
-        title="Fintra documentation."
+        title="DataLens documentation."
         description="How the platform works today, and a transparent view of what's planned."
       />
       <section className="border-b border-line">
@@ -86,7 +86,7 @@ export default function DocsPage() {
       </section>
       <CtaBand
         title="Questions about the platform?"
-        description="Our team answers technical questions about how Fintra works under the hood."
+        description="Our team answers technical questions about how DataLens works under the hood."
         primary={{ label: "Contact us", href: "/contact" }}
         secondary={{ label: "Security overview", href: "/resources/security" }}
       />

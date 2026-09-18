@@ -10,21 +10,21 @@ export function pageMeta(opts: {
   description: string;
   path: string;
 }): Metadata {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fintra.example.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://datalens.example.com";
   return {
     title: opts.title,
     description: opts.description,
     alternates: { canonical: `${siteUrl}${opts.path}` },
     openGraph: {
-      title: `${opts.title} | Fintra`,
+      title: `${opts.title} | DataLens`,
       description: opts.description,
       url: `${siteUrl}${opts.path}`,
-      siteName: "Fintra",
+      siteName: "DataLens",
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${opts.title} | Fintra`,
+      title: `${opts.title} | DataLens`,
       description: opts.description,
     },
   };
@@ -52,18 +52,18 @@ export const NAV: NavGroup[] = [
       {
         heading: "Platform",
         items: [
-          { label: "Finance AI workspace", href: "/product/workspace", desc: "One place for finance work" },
-          { label: "Multi-model AI", href: "/product/models", desc: "Choose the right model per task" },
-          { label: "Model routing", href: "/product/model-routing", desc: "Route work automatically" },
+          { label: "Analysis workspace", href: "/product/workspace", desc: "One place for data work" },
+          { label: "Automatic EDA", href: "/product/eda", desc: "Full profile in one click" },
+          { label: "Charts & figures", href: "/product/charts", desc: "Publication-ready visuals" },
         ],
       },
       {
         heading: "Capabilities",
         items: [
-          { label: "Financial analysis", href: "/product/analysis", desc: "Answers with real numbers" },
-          { label: "Report builder", href: "/product/reports", desc: "Decks and docs from your data" },
-          { label: "Finance agents", href: "/product/agents", desc: "Recurring finance tasks" },
-          { label: "Workflows", href: "/product/workflows", desc: "Close, forecast, report" },
+          { label: "Chat with your data", href: "/product/chat", desc: "Ask questions, get verified answers" },
+          { label: "Report builder", href: "/product/reports", desc: "Structured reports from analysis" },
+          { label: "Multi-model AI", href: "/product/models", desc: "The right model per question" },
+          { label: "Smart routing", href: "/product/model-routing", desc: "Route work automatically" },
         ],
       },
     ],
@@ -76,17 +76,17 @@ export const NAV: NavGroup[] = [
       {
         heading: "By team",
         items: [
-          { label: "FP&A", href: "/solutions/fpa", desc: "Budgets, forecasts, variance" },
-          { label: "Accounting", href: "/solutions/accounting", desc: "Close, reconcile, document" },
-          { label: "Audit", href: "/solutions/audit", desc: "Evidence and consistency" },
+          { label: "Marketing", href: "/solutions/marketing", desc: "Campaign and channel analysis" },
+          { label: "Operations", href: "/solutions/operations", desc: "Process and supply data" },
+          { label: "Product & growth", href: "/solutions/product", desc: "Usage, funnels, retention" },
         ],
       },
       {
         heading: "By role",
         items: [
-          { label: "CFO teams", href: "/solutions/cfo", desc: "Board-ready reporting" },
-          { label: "Investment analysis", href: "/solutions/investment", desc: "Research and memos" },
-          { label: "Financial advisory", href: "/solutions/advisory", desc: "Client deliverables" },
+          { label: "Data analysts", href: "/solutions/analysts", desc: "Notebook-speed EDA, no code" },
+          { label: "Researchers", href: "/solutions/research", desc: "Survey and experiment data" },
+          { label: "Executives", href: "/solutions/executives", desc: "Answers without the dashboard" },
         ],
       },
     ],
@@ -99,7 +99,7 @@ export const NAV: NavGroup[] = [
       {
         heading: "Build",
         items: [
-          { label: "Fintra API", href: "/developers/api", desc: "Programmatic access" },
+          { label: "DataLens API", href: "/developers/api", desc: "Programmatic analysis" },
           { label: "Documentation", href: "/developers/docs", desc: "Guides and reference" },
           { label: "Integrations", href: "/developers/integrations", desc: "Connect your stack" },
         ],
@@ -113,9 +113,9 @@ export const NAV: NavGroup[] = [
       {
         heading: "Learn",
         items: [
-          { label: "Guides", href: "/resources/guides", desc: "Finance AI playbooks" },
+          { label: "Guides", href: "/resources/guides", desc: "Data analysis playbooks" },
           { label: "Templates", href: "/resources/templates", desc: "Start from a proven format" },
-          { label: "Security", href: "/resources/security", desc: "How Fintra protects data" },
+          { label: "Security", href: "/resources/security", desc: "How DataLens protects data" },
           { label: "Help center", href: "/resources/help", desc: "Answers and support" },
         ],
       },
@@ -131,30 +131,30 @@ export const FOOTER_COLS: { heading: string; links: NavChild[] }[] = [
     links: [
       { label: "Overview", href: "/product" },
       { label: "Workspace", href: "/product/workspace" },
-      { label: "Multi-model AI", href: "/product/models" },
-      { label: "Analysis", href: "/product/analysis" },
+      { label: "Automatic EDA", href: "/product/eda" },
+      { label: "Charts & figures", href: "/product/charts" },
+      { label: "Chat with data", href: "/product/chat" },
       { label: "Reports", href: "/product/reports" },
-      { label: "Agents", href: "/product/agents" },
-      { label: "Workflows", href: "/product/workflows" },
-      { label: "Model routing", href: "/product/model-routing" },
+      { label: "Multi-model AI", href: "/product/models" },
+      { label: "Smart routing", href: "/product/model-routing" },
     ],
   },
   {
     heading: "Solutions",
     links: [
-      { label: "FP&A", href: "/solutions/fpa" },
-      { label: "Accounting", href: "/solutions/accounting" },
-      { label: "Audit", href: "/solutions/audit" },
-      { label: "CFO teams", href: "/solutions/cfo" },
-      { label: "Investment analysis", href: "/solutions/investment" },
-      { label: "Financial advisory", href: "/solutions/advisory" },
+      { label: "Marketing", href: "/solutions/marketing" },
+      { label: "Operations", href: "/solutions/operations" },
+      { label: "Product & growth", href: "/solutions/product" },
+      { label: "Data analysts", href: "/solutions/analysts" },
+      { label: "Researchers", href: "/solutions/research" },
+      { label: "Executives", href: "/solutions/executives" },
     ],
   },
   {
     heading: "Developers",
     links: [
       { label: "Overview", href: "/developers" },
-      { label: "Fintra API", href: "/developers/api" },
+      { label: "DataLens API", href: "/developers/api" },
       { label: "Documentation", href: "/developers/docs" },
       { label: "Integrations", href: "/developers/integrations" },
     ],
@@ -174,8 +174,8 @@ export const FOOTER_COLS: { heading: string; links: NavChild[] }[] = [
     heading: "Company",
     links: [
       { label: "Contact", href: "/contact" },
+      { label: "Open workspace", href: "/agent" },
       { label: "Log in", href: "/login" },
-      { label: "Sign up", href: "/signup" },
       { label: "Terms", href: "/terms" },
       { label: "Privacy", href: "/privacy" },
     ],

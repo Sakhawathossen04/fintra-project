@@ -13,11 +13,11 @@ function pageMetaSafe() {
   return {
     title: "Pricing",
     description:
-      "Fintra plans: start free, upgrade to Pro or Max as your finance work scales, or talk to us about Enterprise.",
+      "DataLens plans: start free, upgrade to Pro or Max as your data work scales, or talk to us about Enterprise.",
     openGraph: {
-      title: "Pricing | Fintra",
+      title: "Pricing | DataLens",
       description:
-        "Start free, upgrade to Pro or Max as your finance work scales, or talk to us about Enterprise.",
+        "Start free, upgrade to Pro or Max as your data work scales, or talk to us about Enterprise.",
     },
   };
 }
@@ -25,11 +25,11 @@ function pageMetaSafe() {
 const FAQS = [
   {
     q: "What's included in the Free plan?",
-    a: "The Free plan includes the Fintra workspace with standard AI models, financial analysis chat, basic report generation, and three agent runs per day — enough to try Fintra on real work.",
+    a: "The Free plan includes the DataLens workspace with standard AI models, data analysis chat, basic report generation, and three agent runs per day — enough to try DataLens on real work.",
   },
   {
     q: "What's the difference between Pro and Max?",
-    a: "Pro is built for individual finance professionals: premium models, unlimited agent runs, reports, templates, and workflows. Max raises usage limits substantially and adds advanced model routing and multi-agent workflows for teams that live in Fintra all day.",
+    a: "Pro is built for individual data professionals: premium models, unlimited agent runs, reports, templates, and workflows. Max raises usage limits substantially and adds advanced model routing and multi-agent workflows for teams that live in DataLens all day.",
   },
   {
     q: "How does annual billing work?",
@@ -55,7 +55,7 @@ export default async function PricingPage() {
           <SectionHeading
             align="center"
             eyebrow="Pricing"
-            title="Plans for every stage of finance work."
+            title="Plans for every stage of data work."
             description="Start free and upgrade when the work demands it. No credit card required to begin."
           />
         </Reveal>
@@ -86,7 +86,7 @@ export default async function PricingPage() {
               </h2>
               <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-paper/60">
                 SSO/SAML, centralized billing, audit logs, custom data retention, and a team
-                that helps you roll Fintra out across finance.
+                that helps you roll DataLens out across Data analysis.
               </p>
             </div>
           </Reveal>

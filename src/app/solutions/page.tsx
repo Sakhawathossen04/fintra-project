@@ -8,40 +8,40 @@ import { pageMeta } from "@/lib/site";
 export const metadata: Metadata = pageMeta({
   title: "Solutions",
   description:
-    "Fintra for FP&A, accounting, audit, CFO teams, investment analysis, and financial advisory.",
+    "DataLens for marketing, operations, product & growth, data analysts, researchers, and executives.",
   path: "/solutions",
 });
 
 const SOLUTIONS = [
   {
-    name: "FP&A",
-    href: "/solutions/fpa",
-    desc: "Budgeting, forecasting, variance analysis, and management reporting.",
+    name: "Marketing",
+    href: "/solutions/marketing",
+    desc: "Channel performance, campaign comparisons, and spend efficiency from the exports you already have.",
   },
   {
-    name: "Accounting",
-    href: "/solutions/accounting",
-    desc: "Statement analysis, close workflows, reconciliations, and research.",
+    name: "Operations",
+    href: "/solutions/operations",
+    desc: "Supply chain, logistics, and process data with quality checks and outlier triage.",
   },
   {
-    name: "Audit",
-    href: "/solutions/audit",
-    desc: "Document review, anomaly investigation, and evidence organization.",
+    name: "Product & growth",
+    href: "/solutions/product",
+    desc: "Event exports, funnels, cohorts, and experiment pre-reads — analyzed conversationally.",
   },
   {
-    name: "CFO teams",
-    href: "/solutions/cfo",
-    desc: "Board reporting, executive summaries, and scenario analysis.",
+    name: "Data analysts",
+    href: "/solutions/analysts",
+    desc: "Notebook-speed EDA and profiling without the notebook boilerplate.",
   },
   {
-    name: "Investment analysis",
-    href: "/solutions/investment",
-    desc: "Company research, model checking, and investment memos.",
+    name: "Researchers",
+    href: "/solutions/research",
+    desc: "Survey and experiment data with deterministic statistics you can cite.",
   },
   {
-    name: "Financial advisory",
-    href: "/solutions/advisory",
-    desc: "Client research, analysis, and deliverable preparation at scale.",
+    name: "Executives",
+    href: "/solutions/executives",
+    desc: "Plain-language answers and forwardable reports, without the BI queue.",
   },
 ];
 
@@ -50,8 +50,8 @@ export default function SolutionsPage() {
     <PageShell>
       <PageHero
         eyebrow="Solutions"
-        title="Fintra, shaped around your finance role."
-        description="The same workspace, tuned to how each finance team works — from FP&A to advisory."
+        title="DataLens, shaped around your work."
+        description="The same analysis workspace, tuned to how each team actually uses data — from marketing to research."
       />
       <section className="border-b border-line">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
@@ -77,7 +77,7 @@ export default function SolutionsPage() {
       </section>
       <CtaBand
         title="Not sure where you fit?"
-        description="Tell us how your team works and we'll point you to the right setup."
+        description="Tell us how your team works with data and we'll point you to the right setup."
         primary={{ label: "Contact us", href: "/contact" }}
         secondary={{ label: "Explore the product", href: "/product" }}
       />

@@ -8,7 +8,7 @@ import { pageMeta } from "@/lib/site";
 export const metadata: Metadata = pageMeta({
   title: "Enterprise",
   description:
-    "Fintra Enterprise: SSO, centralized administration, audit logs, custom retention, and dedicated support for large finance organizations.",
+    "DataLens Enterprise: SSO, centralized administration, audit logs, custom retention, and dedicated support for large data-driven organizations.",
   path: "/enterprise",
 });
 
@@ -27,7 +27,7 @@ const CAPABILITIES = [
   },
   {
     title: "Partnership",
-    points: ["Dedicated support", "Onboarding for finance teams", "Template & rollout assistance", "Roadmap input"],
+    points: ["Dedicated support", "Onboarding for data teams", "Template & rollout assistance", "Roadmap input"],
   },
 ];
 
@@ -36,8 +36,8 @@ export default function EnterprisePage() {
     <PageShell>
       <PageHero
         eyebrow="Enterprise"
-        title="Fintra for large finance organizations."
-        description="Everything in Max, plus the security, administration, and support that enterprise finance teams require — scoped and priced with your team."
+        title="DataLens for large data-driven organizations."
+        description="Everything in Max, plus the security, administration, and support that enterprise data teams require — scoped and priced with your team."
         actions={
           <>
             <a href="/contact" className="inline-flex h-11 items-center rounded-full bg-copper px-6 text-[15px] font-medium text-white hover:bg-copper-strong">
@@ -78,7 +78,7 @@ export default function EnterprisePage() {
             <SectionHeading
               eyebrow="Rollout"
               title="A pilot that becomes a rollout."
-              description="Most enterprise teams start with one finance function — FP&A or accounting — prove the time savings in a month, then expand. We help you scope the pilot, set the success criteria, and support the rollout."
+              description="Most enterprise teams start with one analysis function — FP&A or accounting — prove the time savings in a month, then expand. We help you scope the pilot, set the success criteria, and support the rollout."
             />
           </Reveal>
           <Reveal delay={0.1}>

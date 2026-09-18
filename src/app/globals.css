@@ -62,7 +62,6 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-copper);
   outline-offset: 2px;
-  border-radius: 4px;
 }
 
 /* Reduced motion: disable decorative animation globally */
@@ -80,3 +79,127 @@ body {
   scrollbar-width: thin;
   scrollbar-color: var(--color-line-strong) transparent;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   DataLens agent workspace — dark theme scoped to .dark-agent
+   ═══════════════════════════════════════════════════════════════ */
+
+.dark-agent {
+  --paper: #faf9f7;
+  --line-soft: rgba(255, 255, 255, 0.08);
+  color-scheme: dark;
+}
+
+.dark-agent ::selection {
+  background: rgba(180, 83, 9, 0.45);
+  color: #faf9f7;
+}
+
+.dark-agent :focus-visible {
+  outline-color: #faf9f7;
+}
+
+.dark-agent * {
+  scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+}
+
+/* ── Markdown (chat + reports) ── */
+
+.dl-md-h2 {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-paper);
+  margin: 20px 0 8px;
+}
+.dl-md-h3 {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--color-paper);
+  margin: 16px 0 6px;
+}
+.dl-md-p {
+  margin: 8px 0;
+  color: inherit;
+}
+.dl-md-ul, .dl-md-ol {
+  margin: 8px 0;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.dl-md-ul { list-style: disc; }
+.dl-md-ol { list-style: decimal; }
+.dl-md-ul li::marker, .dl-md-ol li::marker {
+  color: rgba(250, 249, 247, 0.4);
+}
+.dl-md-quote {
+  border-left: 2px solid rgba(250, 249, 247, 0.25);
+  padding: 2px 0 2px 12px;
+  margin: 10px 0;
+  color: rgba(250, 249, 247, 0.65);
+  font-style: italic;
+}
+.dl-md-pre {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  padding: 12px 14px;
+  overflow-x: auto;
+  margin: 10px 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.55;
+  color: rgba(250, 249, 247, 0.85);
+}
+.dl-md code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  padding: 1.5px 5px;
+  color: #fcd9a8;
+}
+.dl-md-pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+.dl-md a {
+  color: #93c5fd;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.dl-md strong { color: var(--color-paper); }
+.dl-md-hr {
+  border-color: rgba(255, 255, 255, 0.1);
+  margin: 16px 0;
+}
+.dl-md-tablewrap {
+  overflow-x: auto;
+  margin: 12px 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.dl-md-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+.dl-md-table th {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 12px;
+  font-weight: 600;
+  color: rgba(250, 249, 247, 0.75);
+  white-space: nowrap;
+}
+.dl-md-table td {
+  padding: 7px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  color: rgba(250, 249, 247, 0.8);
+}
+/* Report variant: a touch larger for document reading */
+.dl-report { font-size: 14.5px; line-height: 1.65; }
+.dl-report .dl-md-h2 { font-size: 19px; margin-top: 26px; }

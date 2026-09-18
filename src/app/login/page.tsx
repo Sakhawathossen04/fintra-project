@@ -7,7 +7,7 @@ import { getAuthAccount } from "@/lib/auth";
 
 export const metadata: Metadata = {
   title: "Log in",
-  description: "Log in to your Fintra workspace.",
+  description: "Log in to your DataLens workspace.",
   robots: { index: false },
 };
 

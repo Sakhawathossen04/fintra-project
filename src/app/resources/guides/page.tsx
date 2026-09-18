@@ -7,35 +7,35 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Guides",
-  description: "Practical guides for finance work with AI: variance analysis, board packs, close support, and more.",
+  description: "Practical guides for AI-assisted analysis: dataset triage, quality audits, segment discovery, and reporting.",
   path: "/resources/guides",
 });
 
 const GUIDES = [
   {
-    title: "Run a monthly variance review with Fintra",
-    read: "8 min",
-    body: "Upload actuals, budget, and prior period. Ask for driver decomposition, review the ranked drivers against your knowledge of the month, then generate the memo and exhibits. The whole review fits in an hour — with sources attached.",
-  },
-  {
-    title: "Assemble a board pack from live numbers",
-    read: "10 min",
-    body: "Start from your team's period analysis, generate the executive summary, and build exhibits in your standard template. Because the pack draws from the analysis, the story and the numbers agree.",
-  },
-  {
-    title: "Use agents for recurring close tasks",
-    read: "6 min",
-    body: "Define the task once — checklist progression, documentation organization, open-item summaries. The agent runs each period, produces a draft, and you approve before anything ships.",
-  },
-  {
-    title: "Check a financial model for consistency",
-    read: "7 min",
-    body: "Upload the model and its memo. Fintra cross-foots totals, tests whether assumptions match the narrative, and lists discrepancies with references — a review pass that takes minutes.",
-  },
-  {
-    title: "Choose the right model for a finance task",
+    title: "Triage a new dataset in five minutes",
     read: "5 min",
-    body: "Fast extraction? Long-context synthesis? Careful reasoning? A short tour of model strengths and when Fintra's routing picks each one.",
+    body: "Drop the file, read the quality score, and skim the auto-figures. You'll know the shape, the dirty columns, and the two most interesting relationships before your notebook would have finished importing.",
+  },
+  {
+    title: "Run a data-quality audit worth sharing",
+    read: "7 min",
+    body: "Upload the export, open the Findings tab, and export the stats CSV. Missing-value and duplicate counts arrive with context — enough to hand engineering a concrete fix list.",
+  },
+  {
+    title: "From CSV to stakeholder report in one sitting",
+    read: "8 min",
+    body: "Profile the data, ask the two questions your audience will ask, generate the report with the sections they read, and export the Markdown. The whole loop happens in the workspace.",
+  },
+  {
+    title: "When to distrust an average",
+    read: "6 min",
+    body: "Skew and outliers change which summary numbers are honest. A short tour of the EDA flags — skewness, IQR outliers, small segments — and what to use instead.",
+  },
+  {
+    title: "Choose the right model for an analysis task",
+    read: "5 min",
+    body: "Quick lookups want fast models; correlation questions want reasoning models. How DataLens's smart routing decides, and when to pin a model manually.",
   },
 ];
 
@@ -44,8 +44,8 @@ export default function GuidesPage() {
     <PageShell>
       <PageHero
         eyebrow="Resources · Guides"
-        title="Finance AI playbooks."
-        description="Short, practical guides for putting Fintra to work on real finance tasks."
+        title="Data analysis playbooks."
+        description="Short, practical guides for putting DataLens to work on real analysis tasks."
       />
       <section className="border-b border-line">
         <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
@@ -63,8 +63,8 @@ export default function GuidesPage() {
       </section>
       <CtaBand
         title="Try these in your workspace."
-        description="Every guide works on the Free plan."
-        primary={{ label: "Start free", href: "/signup" }}
+        description="Every guide works on the free tier — no account needed."
+        primary={{ label: "Open workspace", href: "/agent" }}
       />
     </PageShell>
   );

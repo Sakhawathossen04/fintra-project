@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fintra.example.com";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://datalens.example.com";
 
 const ROUTES = [
   "",

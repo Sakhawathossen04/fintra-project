@@ -116,10 +116,10 @@ export default function Header({ authed }: { authed: boolean }) {
           {authed ? (
             <>
               <a
-                href={process.env.NEXT_PUBLIC_WORKSPACE_URL ?? "/workspace"}
+                href="/agent"
                 className="hidden h-9 items-center gap-1.5 rounded-full px-4 text-sm text-ink-soft transition-colors hover:bg-paper-deep hover:text-ink sm:inline-flex"
               >
-                Open workspace
+                Workspace
                 <ArrowRight aria-hidden className="size-3.5" />
               </a>
               <Link
@@ -131,17 +131,17 @@ export default function Header({ authed }: { authed: boolean }) {
             </>
           ) : (
             <>
-              <Link
-                href="/login"
+              <a
+                href="/agent"
                 className="hidden h-9 items-center rounded-full px-4 text-sm text-ink-soft transition-colors hover:bg-paper-deep hover:text-ink sm:inline-flex"
               >
-                Log in
-              </Link>
+                Open workspace
+              </a>
               <Link
-                href="/signup"
-                className="inline-flex h-9 items-center rounded-full bg-charcoal px-4 text-sm font-medium text-paper transition-colors hover:bg-black"
+                href="/login"
+                className="hidden h-9 items-center rounded-full border border-line-strong px-4 text-sm text-ink transition-colors hover:bg-paper-deep sm:inline-flex"
               >
-                Start free
+                Log in
               </Link>
             </>
           )}
@@ -288,36 +288,26 @@ export default function Header({ authed }: { authed: boolean }) {
               </li>
             </ul>
             <div className="mt-6 flex flex-col gap-2.5">
+              <a
+                href="/agent"
+                className="flex h-11 items-center justify-center rounded-full bg-charcoal text-sm font-medium text-paper"
+              >
+                Open workspace — free
+              </a>
               {authed ? (
-                <>
-                  <a
-                    href={process.env.NEXT_PUBLIC_WORKSPACE_URL ?? "/workspace"}
-                    className="flex h-11 items-center justify-center rounded-full bg-charcoal text-sm font-medium text-paper"
-                  >
-                    Open workspace
-                  </a>
-                  <Link
-                    href="/settings"
-                    className="flex h-11 items-center justify-center rounded-full border border-line-strong text-sm font-medium text-ink"
-                  >
-                    Settings
-                  </Link>
-                </>
+                <Link
+                  href="/settings"
+                  className="flex h-11 items-center justify-center rounded-full border border-line-strong text-sm font-medium text-ink"
+                >
+                  Settings
+                </Link>
               ) : (
-                <>
-                  <Link
-                    href="/login"
-                    className="flex h-11 items-center justify-center rounded-full border border-line-strong text-sm font-medium text-ink"
-                  >
-                    Log in
-                  </Link>
-                  <Link
-                    href="/signup"
-                    className="flex h-11 items-center justify-center rounded-full bg-charcoal text-sm font-medium text-paper"
-                  >
-                    Start free
-                  </Link>
-                </>
+                <Link
+                  href="/login"
+                  className="flex h-11 items-center justify-center rounded-full border border-line-strong text-sm font-medium text-ink"
+                >
+                  Log in
+                </Link>
               )}
             </div>
           </nav>

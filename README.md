@@ -1,8 +1,9 @@
-# FINTRA — Finance AI Workspace (Website)
+# DataLens — AI Data Analysis Workspace
 
-The complete public website for FINTRA: multi-page marketing site, pricing,
-authentication, checkout, and integration with the existing FINTRA workspace
-product (`https://fintra-project-hpx4.vercel.app/`).
+The complete public website and workspace for **DataLens**: a data-analysis
+platform where users upload CSV/JSON datasets and get a full automatic EDA
+(exploratory data analysis) — statistics, figures, AI-narrated findings, and
+exportable reports — with **no login required**.
 
 Built with **Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · Framer Motion**.
 
@@ -24,129 +25,128 @@ npm start
 
 Type checking: `npm run typecheck`
 
-## Environment variables
+## The workspace (`/agent`) — no login needed
 
-Copy `.env.example` to `.env.local` and fill in what you need.
-Everything works locally with **zero** configuration.
+Open `/agent` and start working immediately. Identity is an anonymous
+httpOnly cookie (`dl_anon`) issued on first visit — threads, datasets, and
+saved reports persist per browser with zero signup.
 
-| Variable | Required | Purpose |
-|---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | production | Canonical/OG/sitemap base URL |
-| `NEXT_PUBLIC_WORKSPACE_URL` | no | Existing FINTRA product URL (defaults to `https://final-product-one.vercel.app`) |
-| `DATABASE_URL` | no | MongoDB Atlas connection string for durable storage |
-| `STRIPE_SECRET_KEY` | no | Enables live payment mode (see Payments) |
-| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | no | Stripe publishable key |
+- **Chat** — ask questions in plain language; answers stream via SSE and are
+  grounded in the verified statistics of the attached dataset.
+- **Upload** — drag & drop or attach CSV / TSV / JSON (or paste raw data).
+  Parsing, type inference, and the full EDA run instantly.
+- **Analysis** — the EDA tab: quality scorecard, auto-generated figures
+  (histograms, box plots, scatter fits, correlation matrix, heatmaps, trend
+  lines, composition charts), detected patterns, and column statistics.
+- **Reports** — one-click structured report generation (Markdown), with a
+  deterministic fallback that works without any API key.
+- **History** — every thread, reopenable and deletable.
+- **Export** — analysis JSON, summary-statistics CSV, Markdown reports and
+  transcripts.
+
+## AI models via OpenRouter
+
+The backend routes across leading models (DeepSeek, Llama, Gemini, Qwen,
+GPT, Claude, Mistral, …) through **OpenRouter**.
+
+**The API key slot is intentionally empty.** To enable AI narration:
+
+1. Get a key at [openrouter.ai/keys](https://openrouter.ai/keys) (free keys work with free models)
+2. Set it in `.env.local`:
+
+```
+OPENROUTER_API_KEY=sk-or-v1-...
+```
+
+Without a key, everything except live LLM narration still works: the EDA
+engine, all figures, quality scoring, and the deterministic report generator.
+
+**Auto (Smart Router)**: the default route profiles each question (length,
+complexity signals, dataset presence, Quick/Deep effort) and picks the model —
+with an automatic failover chain for rate limits (429), credit errors (402),
+and upstream 5xx. Users can pin any model from the catalog picker.
+
+## The EDA engine (deterministic, no Python)
+
+`src/lib/eda/` — pure TypeScript, no dependencies:
+
+- `parse.ts` — CSV/TSV/JSON parsing with delimiter detection, quoted fields,
+  currency/percent/parenthesis-aware numeric parsing, and type inference.
+- `stats.ts` — quantiles, mean/std/skew/kurtosis, Pearson & Spearman
+  correlation, linear regression, group aggregates, cross-tabs, histograms,
+  IQR outlier detection.
+- `analyze.ts` — the orchestrator: produces quality scores, insights, and
+  figure specs (`FigureSpec[]`) rendered client-side as inline SVG
+  (`src/components/agent/Figure.tsx`).
+
+The LLM never computes user-facing statistics — it narrates the engine's
+verified numbers (enforced via the system prompt and grounding context).
+
+## Architecture
+
+```
+src/
+  app/
+    agent/                 # The workspace (dark shell, no marketing chrome)
+    api/agent/
+      upload/  chat/  analyze/  report/
+      threads/ save/  models/  export/
+    ...                    # Marketing site (product, solutions, pricing, ...)
+  components/agent/        # Workspace UI (Workspace, panels, figures, markdown)
+  lib/
+    eda/                   # Deterministic EDA engine
+    ai/openrouter.ts       # Model catalog, smart router, streaming client
+    agent-store.ts         # Thread persistence (file or MongoDB adapters)
+    anon.ts                # Anonymous cookie identity
+```
 
 ## Storage adapters
 
-Accounts, sessions, billing records, and contact submissions persist through
-one contract (`src/lib/storage.ts`) with three interchangeable adapters:
+Workspace threads persist per anonymous browser id through
+`src/lib/agent-store.ts`:
 
-1. **File** (default) — JSON file in `.data/`; survives restarts, works on
-   any Node host with no services.
-2. **MongoDB** — active when `DATABASE_URL` is set (Atlas/serverless-ready).
-3. **Memory** — `FINTRA_STORAGE=memory`; dev/tests only.
+1. **File** (default) — JSON in `.data/agent-threads/`
+2. **MongoDB** — active when `DATABASE_URL` is set (Atlas/serverless-ready)
 
-Swap adapters without touching calling code.
-
-## Authentication
-
-Email + password auth with scrypt password hashing and httpOnly
-SameSite=Lax session cookies (30-day TTL, server-side validation on every
-protected route).
-
-- `POST /api/auth/signup` — create account + session
-- `POST /api/auth/login` — verify credentials + session
-- `POST /api/auth/logout`, `POST /api/workspace-logout` — end session
-- `src/middleware.ts` — guards `/workspace`, `/settings`, `/billing`,
-  `/checkout` and redirects anonymous visitors to
-  `/login?redirect=<original-path>`
-
-Marketing CTAs ("Start free", "Start using Fintra") always route through
-authentication before the workspace. Signed-in users hitting `/login` are
-redirected to the workspace.
-
-## Workspace integration (preserved product)
-
-The existing FINTRA workspace is **not** rebuilt or replaced.
-`/workspace` is a server component that:
-
-1. Redirects to `/login` when unauthenticated,
-2. Shows the signed-in user's plan/account and hands off to the existing
-   product at `NEXT_PUBLIC_WORKSPACE_URL`.
-
-A "with account context" link passes `email` and `plan` as query parameters;
-when the workspace grows its own session exchange, replace that handoff with
-a token exchange — no marketing-site changes needed.
-
-## Payments (integration boundary)
-
-Checkout runs in **clearly-labeled demo mode** until a payment provider is
-configured. No card data is collected; no fake charge is ever presented as
-real. The checkout UI, order summary, billing interval, success/cancel
-states, and billing history are all production-quality and provider-agnostic.
-
-To go live with Stripe:
-
-1. `npm i stripe` and set `STRIPE_SECRET_KEY` +
-   `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
-2. Implement `src/lib/payments/stripe.ts` (create a Checkout Session from
-   the plan config in `src/lib/plans.ts`)
-3. Route `src/app/api/billing/checkout/route.ts` to the Stripe session and
-   grant the plan in the webhook handler after `checkout.session.completed`
-
-Plan prices are configuration values in `src/lib/plans.ts` — edit there,
-nowhere else.
+Accounts/sessions/billing (marketing-site auth, still optional) use
+`src/lib/storage.ts` with the same two adapters.
 
 ## Routes
 
 ```
-Marketing    /  /product (+7 capability pages)  /solutions (+6)
-             /developers (+3)  /resources (+4)  /pricing  /enterprise
-             /contact  /terms  /privacy  /404
-Conversion   /checkout?plan=  /payment/success  /payment/cancel  /billing
-Auth         /login  /signup
-Product      /workspace (guarded handoff)  /settings (guarded)
-API          /api/auth/*  /api/billing/*  /api/contact  /api/workspace-logout
+Workspace    /agent  (open — no login)
+Marketing    /  /product (+7 pages)  /solutions (+6)  /developers (+3)
+             /resources (+4)  /pricing  /enterprise  /contact  /terms  /privacy
+Auth (opt.)  /login  /signup   (billing-related routes only)
+API          /api/agent/*  /api/auth/*  /api/billing/*  /api/contact
 ```
 
-## Design system
-
-Tokens live in `src/app/globals.css` (`@theme`): warm paper background,
-charcoal ink, muted copper accent, sage support, radii, shadows, motion.
-Shared primitives: `Button`, `Brand` (logo/eyebrow/headings/disclosure),
-`Reveal` (scroll animation with reduced-motion support), `Window`,
-SVG chart primitives (`charts.tsx`), `PageHero`/`FeatureRow`/`CtaBand`
-(`src/lib/marketing.tsx`).
+`src/middleware.ts` issues the anonymous workspace cookie on `/agent` and its
+APIs and guards only billing-related routes (`/settings`, `/billing`,
+`/checkout`).
 
 ## Deployment (Vercel)
 
 ```bash
-npm i -g vercel
-vercel login
 vercel            # preview
 vercel --prod     # production
 ```
 
-Set environment variables in the Vercel dashboard (Project → Settings →
-Environment Variables):
+Environment variables (Project → Settings → Environment Variables):
 
+- `OPENROUTER_API_KEY` — enables AI narration (works empty for EDA-only)
 - `NEXT_PUBLIC_SITE_URL=https://<your-domain>`
 - `DATABASE_URL=<mongo-uri>` (recommended in production)
-- `NEXT_PUBLIC_WORKSPACE_URL=https://final-product-one.vercel.app`
 
-`vercel.json` pins the framework preset and extends the function timeout for
-the auth/billing APIs.
+`vercel.json` extends function timeouts for the streaming chat/report APIs
+(120s) — adjust to your plan's limits.
 
-## QA checklist (verified)
+## QA checklist
 
-- All 33 public routes return 200; 404 page is branded
-- Signup → workspace, login → workspace, logout flows
-- `/workspace`, `/settings`, `/billing`, `/checkout` redirect when signed out
-- Checkout journey with demo-mode disclosure; Enterprise checkout blocked
-  with contact-sales path; downgrade works
-- Contact form validates, submits, and confirms
-- Mobile drawer navigation (open/expand/navigate/close)
-- Desktop mega menus, pricing interval toggle, feature table search
-- Keyboard focus states, skip link, ARIA labels, reduced-motion support
-- `tsc --noEmit` and `next build` clean; no console errors on pages
+- `/agent` loads signed-out; anonymous cookie issued by middleware
+- CSV + JSON uploads parse, EDA renders (figures + findings + columns)
+- Chat streams; model router fails over; keyless mode shows a clear notice
+- Report generation works with and without an API key
+- Exports: analysis JSON, stats CSV, report .md, transcript .md
+- All marketing routes rebranded to DataLens; CTAs point to /agent
+- `tsc --noEmit` and `next build` clean

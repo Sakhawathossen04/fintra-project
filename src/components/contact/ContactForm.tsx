@@ -54,7 +54,7 @@ export function ContactForm() {
         </div>
         <h2 className="mt-5 text-xl font-semibold tracking-tight text-ink">Message received</h2>
         <p className="mx-auto mt-2.5 max-w-sm text-[14.5px] leading-relaxed text-ink-mute">
-          Thanks, {name.split(" ")[0]}. Your message reached the Fintra team — we'll reply to{" "}
+          Thanks, {name.split(" ")[0]}. Your message reached the DataLens team — we'll reply to{" "}
           <span className="font-medium text-ink">{email}</span> shortly.
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
@@ -77,7 +77,7 @@ export function ContactForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="c-name" className="mb-1.5 block text-[13px] font-medium text-ink-soft">Name</label>
-          <input id="c-name" type="text" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} className={inputCls} placeholder="Ada Finance" />
+          <input id="c-name" type="text" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} className={inputCls} placeholder="Ada Lovelace" />
         </div>
         <div>
           <label htmlFor="c-email" className="mb-1.5 block text-[13px] font-medium text-ink-soft">Work email</label>
@@ -108,7 +108,7 @@ export function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           className="w-full rounded-[10px] border border-line-strong bg-surface px-3.5 py-3 text-[15px] text-ink placeholder:text-ink-faint focus:border-copper focus:outline-none"
-          placeholder="We're a 12-person finance team looking to…"
+          placeholder="We're a 12-person data team looking to…"
         />
       </div>
 
@@ -124,7 +124,7 @@ export function ContactForm() {
         </Button>
       </div>
       <p className="mt-4 text-[12.5px] leading-relaxed text-ink-faint">
-        Submitting sends your message to the Fintra team. We use it only to respond — see the privacy policy.
+        Submitting sends your message to the DataLens team. We use it only to respond — see the privacy policy.
       </p>
     </form>
   );

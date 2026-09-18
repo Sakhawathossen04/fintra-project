@@ -107,7 +107,7 @@ export function LoginForm() {
       </Button>
 
       <p className="text-center text-[13.5px] text-ink-mute">
-        New to Fintra?{" "}
+        New to DataLens?{" "}
         <Link href="/signup" className="font-medium text-copper-strong hover:underline">
           Create an account
         </Link>
@@ -176,7 +176,7 @@ export function SignupForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="h-11 w-full rounded-[10px] border border-line-strong bg-surface px-3.5 text-[15px] text-ink placeholder:text-ink-faint focus:border-copper focus:outline-none"
-          placeholder="Ada Finance"
+          placeholder="Ada Lovelace"
         />
       </div>
       <div>
@@ -234,7 +234,7 @@ export function SignupForm() {
       </Button>
 
       <p className="text-center text-[13px] leading-relaxed text-ink-faint">
-        By continuing, you agree to Fintra's{" "}
+        By continuing, you agree to DataLens's{" "}
         <Link href="/terms" className="underline hover:text-ink-mute">
           Terms
         </Link>{" "}

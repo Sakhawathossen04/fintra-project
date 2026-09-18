@@ -7,7 +7,7 @@ import { ContactForm } from "@/components/contact/ContactForm";
 
 export const metadata: Metadata = pageMeta({
   title: "Contact",
-  description: "Talk to the Fintra team — sales, enterprise, support, or feedback.",
+  description: "Talk to the DataLens team — sales, enterprise, support, or feedback.",
   path: "/contact",
 });
 
@@ -16,7 +16,7 @@ export default function ContactPage() {
     <PageShell>
       <PageHero
         eyebrow="Contact"
-        title="Talk to the Fintra team."
+        title="Talk to the DataLens team."
         description="Sales, enterprise, support, or product feedback — this form reaches us, and we reply."
       />
       <section className="border-b border-line">
@@ -38,7 +38,7 @@ export default function ContactPage() {
               ))}
               <div className="rounded-[var(--radius-card)] border border-line bg-surface p-6">
                 <p className="text-[15px] font-semibold text-ink">Prefer email?</p>
-                <p className="mt-1.5 text-[13.5px] text-ink-mute">hello@fintra.example.com</p>
+                <p className="mt-1.5 text-[13.5px] text-ink-mute">hello@datalens.example.com</p>
               </div>
             </div>
           </Reveal>

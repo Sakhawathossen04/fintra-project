@@ -10,55 +10,59 @@ import { PLANS } from "@/lib/plans";
 import { pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
-  title: "Fintra — Finance AI Workspace",
+  title: "DataLens — Chat with your data. Analysis on autopilot.",
   description:
-    "Fintra brings leading AI models, financial analysis, research, reporting, and recurring finance workflows into one professional workspace.",
+    "Upload a CSV or JSON file and get a complete analysis: automatic EDA, charts, correlations, segments, and AI-narrated findings. No login, no notebook, no code.",
   path: "/",
 });
 
 const USE_CASES = [
   {
-    title: "Variance analysis",
-    desc: "Compare actuals, budget, and prior period. Get drivers, not just deltas — with commentary drafted and cited.",
-    href: "/solutions/fpa",
+    title: "Instant dataset profiling",
+    desc: "Drop any CSV and get structure, types, missing values, duplicates, and quality scores in seconds — the work that eats the first hour of every notebook.",
+    href: "/product/eda",
   },
   {
-    title: "Board reporting",
-    desc: "Turn a month of numbers into a board-ready pack: executive summary, exhibits, and talking points.",
-    href: "/solutions/cfo",
+    title: "Ask questions in plain language",
+    desc: "\"Why did sales dip in March?\" Answers are grounded in the verified statistics computed from your file — with figures rendered alongside.",
+    href: "/product/chat",
   },
   {
-    title: "Close & reconciliation",
-    desc: "Review statements, trace reconciling items, and keep documentation consistent across the close.",
-    href: "/solutions/accounting",
+    title: "Relationships & segments",
+    desc: "Correlation matrices, scatter fits, and group comparisons are detected and drawn automatically — no wrangling matplotlib.",
+    href: "/product/charts",
   },
   {
-    title: "Investment research",
-    desc: "Synthesize filings and models into research notes and investment memos with consistent assumptions.",
-    href: "/solutions/investment",
+    title: "Report-ready output",
+    desc: "Turn any analysis into a structured, exportable report with executive summary, findings, and recommended next steps.",
+    href: "/product/reports",
   },
 ];
 
 const FAQS = [
   {
-    q: "What is Fintra?",
-    a: "Fintra is a Finance AI workspace. It brings leading AI models together with the analysis, reporting, and recurring workflows finance teams do every week — in one professional place.",
+    q: "What is DataLens?",
+    a: "DataLens is an AI data-analysis workspace. Upload a CSV or JSON dataset and it runs a full exploratory analysis — summary statistics, distributions, correlations, segments, outliers, and data-quality checks — then lets you ask questions about the results in plain language.",
   },
   {
-    q: "Which AI models does Fintra support?",
-    a: "Fintra supports leading models including GPT, Claude, Gemini, DeepSeek, and Qwen. You can pick a model per task or let Fintra route work automatically based on what the task needs.",
+    q: "Do I need to create an account?",
+    a: "No. The workspace is open — open it and start working. Your threads are kept private to your browser; there is no login wall between you and your analysis.",
   },
   {
-    q: "Do I need to connect my accounting systems?",
-    a: "No. Fintra works with files you already have — spreadsheets, statements, and documents. You can bring data in and start analyzing immediately, with deeper integrations on the way.",
+    q: "Which AI models power the narration?",
+    a: "DataLens routes across leading models via OpenRouter — including DeepSeek, Llama, Gemini, GPT, and Claude. Free models are included by default; a smart router picks the right model for each question.",
   },
   {
-    q: "Is my financial data used to train models?",
-    a: "No. Your workspace content is yours. See the security page for how data is handled, stored, and protected.",
+    q: "Can the AI invent numbers?",
+    a: "No. Every statistic in your analysis is computed deterministically by the EDA engine first. The AI narrates those verified numbers — it cannot fabricate figures that contradict your data.",
   },
   {
-    q: "Can I try Fintra before paying?",
-    a: "Yes. The Free plan includes workspace access, standard models, and daily agent runs — enough to try Fintra on real work.",
+    q: "What file types can I analyze?",
+    a: "CSV, TSV, and JSON (including column-oriented JSON). Delimiters, currency symbols, percentages, and missing-value conventions are detected automatically.",
+  },
+  {
+    q: "Can I export my work?",
+    a: "Yes — export the full analysis as JSON, the summary statistics as CSV, chat transcripts and reports as Markdown. Your work is never locked in.",
   },
 ];
 
@@ -75,25 +79,25 @@ export default function HomePage() {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <Reveal>
-                <Eyebrow>Finance AI Workspace</Eyebrow>
+                <Eyebrow>AI Data Analysis Workspace</Eyebrow>
               </Reveal>
               <Reveal delay={0.06}>
                 <h1 className="mt-5 text-[clamp(2.6rem,6vw,4.4rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-ink">
-                  Think clearly.
+                  Your data,
                   <br />
-                  Work with numbers.
+                  analyzed on arrival.
                 </h1>
               </Reveal>
               <Reveal delay={0.12}>
                 <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-ink-mute">
-                  Fintra brings AI models, financial analysis, reporting, research, and
-                  recurring finance workflows together in one professional workspace.
+                  Upload a CSV or JSON file. DataLens profiles it, charts it, and
+                  answers your questions — the notebook work, done before you open one.
                 </p>
               </Reveal>
               <Reveal delay={0.18}>
                 <div className="mt-8 flex flex-wrap items-center gap-3">
-                  <ButtonLink href="/signup" size="lg">
-                    Start using Fintra
+                  <ButtonLink href="/agent" size="lg">
+                    Open workspace — free
                   </ButtonLink>
                   <ButtonLink href="/product" variant="secondary" size="lg">
                     Explore the platform
@@ -102,7 +106,7 @@ export default function HomePage() {
               </Reveal>
               <Reveal delay={0.24}>
                 <p className="mt-5 text-[13px] text-ink-faint">
-                  Free plan available · No credit card required
+                  No signup · No credit card · Works without an account
                 </p>
               </Reveal>
             </div>
@@ -120,17 +124,17 @@ export default function HomePage() {
             <Reveal>
               <div className="rounded-[var(--radius-card)] border border-line bg-paper p-5 shadow-[var(--shadow-card)]">
                 <div className="flex items-center justify-between">
-                  <p className="text-[13px] font-medium text-ink">Operating margin — trailing 12 months</p>
-                  <span className="font-mono text-[11px] text-sage">+120 bps</span>
+                  <p className="text-[13px] font-medium text-ink">Distribution — auto-detected</p>
+                  <span className="font-mono text-[11px] text-sage">skew +0.42</span>
                 </div>
                 <div className="mt-4">
-                  <AreaChart points={[19.2, 19.8, 20.1, 20.6, 21.0, 20.8, 21.9, 22.4, 22.9, 23.5, 24.1, 24.8]} />
+                  <AreaChart points={[8, 14, 22, 34, 41, 38, 30, 24, 16, 11, 7, 4]} />
                 </div>
                 <div className="mt-5 grid grid-cols-3 gap-3 border-t border-line pt-4">
                   {[
-                    ["Gross margin", "61.4%"],
-                    ["EBITDA", "$6.1M"],
-                    ["Headcount", "212"],
+                    ["Rows", "12,480"],
+                    ["Columns", "14"],
+                    ["Quality", "96/100"],
                   ].map(([label, value]) => (
                     <div key={label}>
                       <p className="text-[11px] uppercase tracking-wider text-ink-faint">{label}</p>
@@ -142,15 +146,15 @@ export default function HomePage() {
             </Reveal>
             <Reveal delay={0.1}>
               <SectionHeading
-                eyebrow="One workspace"
-                title="Your numbers, finally in conversation."
-                description="Bring spreadsheets, statements, and reports into Fintra and ask real questions. Every answer is grounded in your documents — with sources you can check, not invented figures."
+                eyebrow="One upload"
+                title="The EDA, before you finish your coffee."
+                description="DataLens parses your file, infers every column type, computes the statistics, and renders the figures — then the AI walks you through what matters. What used to be an afternoon of notebook code is now one drag-and-drop."
               />
               <ul className="mt-7 space-y-3.5">
                 {[
-                  "Ask in plain language, get analysis-grade answers",
-                  "Every figure traced back to the source document",
-                  "Share outputs with your team as reports or decks",
+                  "Types, missing values, and duplicates detected automatically",
+                  "Distributions, outliers, correlations, and segments charted for you",
+                  "Every number verified by the engine — the AI can't invent your data",
                 ].map((li) => (
                   <li key={li} className="flex items-start gap-3 text-[15px] text-ink-soft">
                     <span aria-hidden className="mt-[7px] size-1.5 shrink-0 rounded-full bg-copper" />
@@ -163,33 +167,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Finance AI workspace story ── */}
+      {/* ── Workflow story ── */}
       <section className="border-t border-line">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
           <Reveal>
             <SectionHeading
               align="center"
-              eyebrow="Built for finance work"
-              title="Not a chatbot. A workspace."
-              description="Chat is where Fintra starts — not where it ends. Fintra is organized around how finance teams actually operate."
+              eyebrow="Built for analysis"
+              title="Not a chatbot. An analyst's workspace."
+              description="Chat is where DataLens starts — not where it ends. Everything an analyst does after loading a file, wired into one flow."
             />
           </Reveal>
           <div className="mt-14 grid gap-5 md:grid-cols-3">
             {[
               {
                 n: "01",
-                title: "Analyze",
-                desc: "Upload files, connect context, and interrogate the numbers. Fintra keeps history and assumptions in one thread.",
+                title: "Upload",
+                desc: "Drop a CSV or JSON file. Parsing, type inference, and quality scoring happen instantly — right in the browser's workspace.",
               },
               {
                 n: "02",
-                title: "Build",
-                desc: "Turn analysis into reports, decks, and memos with reusable templates your team can standardize on.",
+                title: "Explore",
+                desc: "Read the auto-generated EDA: figures, findings, and quality flags. Then ask follow-ups in plain language, grounded in verified stats.",
               },
               {
                 n: "03",
-                title: "Automate",
-                desc: "Recurring tasks become agents and workflows — close checklists, variance memos, and board packs that run themselves.",
+                title: "Deliver",
+                desc: "Generate a structured report, export figures and statistics, and share the results. Analysis becomes a deliverable, not a scratchpad.",
               },
             ].map((s, i) => (
               <Reveal key={s.n} delay={i * 0.08}>
@@ -212,11 +216,11 @@ export default function HomePage() {
               <SectionHeading
                 dark
                 eyebrow="Multi-model AI"
-                title="The right model for every finance task."
-                description="Different models excel at different work — fast extraction, careful reasoning, long documents. Fintra gives you all of them under one roof, and routes each task to the model that handles it best."
+                title="The right model for every question."
+                description="Quick lookups want speed; deep statistical reasoning wants care. DataLens routes each question to the model that handles it best — via OpenRouter, with free models included by default."
               />
               <div className="mt-8 flex flex-wrap gap-2.5">
-                {["GPT", "Claude", "Gemini", "DeepSeek", "Qwen", "More arriving"].map((m) => (
+                {["DeepSeek", "Llama", "Gemini", "Qwen", "GPT", "Claude"].map((m) => (
                   <span
                     key={m}
                     className="rounded-full border border-white/15 px-3.5 py-1.5 text-[13px] text-paper/80"
@@ -227,7 +231,7 @@ export default function HomePage() {
               </div>
               <div className="mt-8">
                 <ButtonLink href="/product/models" variant="outlineLight">
-                  How model routing works
+                  How smart routing works
                 </ButtonLink>
               </div>
             </Reveal>
@@ -236,10 +240,10 @@ export default function HomePage() {
                 <p className="font-mono text-[11px] text-paper/40">routing preview</p>
                 <div className="mt-4 space-y-3">
                   {[
-                    ["Variance commentary", "Deep reasoning", "Claude"],
-                    ["Invoice extraction", "High volume", "GPT"],
-                    ["Long filings synthesis", "1M context", "Gemini"],
-                    ["Numeric checking", "Precision", "Qwen"],
+                    ["\"How many rows have nulls?\"", "Quick lookup", "Gemini Flash"],
+                    ["\"Explain this correlation\"", "Deep reasoning", "DeepSeek R1"],
+                    ["\"Write the analysis report\"", "Long-form", "Claude"],
+                    ["\"Convert to pandas\"", "Code", "Qwen Coder"],
                   ].map(([task, why, model]) => (
                     <div key={task} className="flex items-center gap-3 rounded-xl bg-white/[0.04] px-4 py-3">
                       <div className="min-w-0 flex-1">
@@ -258,21 +262,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Agents & workflows ── */}
+      {/* ── Verified numbers ── */}
       <section className="border-t border-line bg-surface">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal className="lg:order-2">
               <SectionHeading
-                eyebrow="Agents & workflows"
-                title="Set the work on a schedule."
-                description="Define it once — Fintra runs it every period. Agents draft the variance memo, refresh the forecast, and assemble the board pack. You review, refine, and approve."
+                eyebrow="Verified analysis"
+                title="The AI narrates. The engine computes."
+                description="Every figure in your analysis is calculated deterministically before the AI says a word. The model's job is explanation — not invention — so the numbers in the story are always the numbers in the data."
               />
               <ul className="mt-7 space-y-3.5">
                 {[
-                  "Variance Agent — memo + exhibit tables",
-                  "Forecast Agent — rolling update with assumptions",
-                  "Close Agent — checklist, docs, and follow-ups",
+                  "Statistics computed by the EDA engine, not the LLM",
+                  "Outliers and skew flagged with IQR fences you can verify",
+                  "Export the raw analysis JSON to reproduce every figure",
                 ].map((li) => (
                   <li key={li} className="flex items-start gap-3 text-[15px] text-ink-soft">
                     <span aria-hidden className="mt-[7px] size-1.5 shrink-0 rounded-full bg-sage" />
@@ -281,27 +285,27 @@ export default function HomePage() {
                 ))}
               </ul>
               <div className="mt-8">
-                <ButtonLink href="/product/agents" variant="secondary">
-                  Explore finance agents
+                <ButtonLink href="/product/eda" variant="secondary">
+                  See the EDA engine
                 </ButtonLink>
               </div>
             </Reveal>
             <Reveal delay={0.1} className="lg:order-1">
               <div className="rounded-[var(--radius-card)] border border-line bg-paper p-5 shadow-[var(--shadow-card)]">
                 <div className="flex items-center justify-between">
-                  <p className="text-[13px] font-medium text-ink">Recurring runs</p>
+                  <p className="text-[13px] font-medium text-ink">Group comparison — auto-detected</p>
                   <span className="rounded-full bg-copper-soft px-2.5 py-0.5 font-mono text-[10.5px] text-copper-strong">
-                    monthly
+                    segment view
                   </span>
                 </div>
                 <div className="mt-4">
-                  <BarsChart values={[62, 68, 64, 74, 71, 78, 82, 88]} labels={["F", "M", "A", "M", "J", "J", "A", "S"]} />
+                  <BarsChart values={[62, 84, 51, 73, 45]} labels={["North", "South", "East", "West", "Other"]} />
                 </div>
                 <div className="mt-4 space-y-2 border-t border-line pt-4 font-mono text-[11.5px]">
                   {[
-                    ["Variance memo", "drafted · 09:00"],
-                    ["Forecast refresh", "updated · 09:04"],
-                    ["Board pack", "assembled · 09:11"],
+                    ["segments found", "5 of 5 categories"],
+                    ["strongest gap", "South vs Other — 39 pts"],
+                    ["recommendation", "test South drivers first"],
                   ].map(([name, when]) => (
                     <div key={name} className="flex items-center justify-between rounded-lg bg-surface px-3 py-2">
                       <span className="text-ink-soft">{name}</span>
@@ -321,7 +325,7 @@ export default function HomePage() {
           <Reveal>
             <SectionHeading
               eyebrow="Use cases"
-              title="Where finance teams put Fintra to work."
+              title="Where teams put DataLens to work."
             />
           </Reveal>
           <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2">
@@ -349,7 +353,7 @@ export default function HomePage() {
             <SectionHeading
               align="center"
               eyebrow="Pricing"
-              title="Start free. Scale when you're ready."
+              title="Start free. Stay free if you like."
             />
           </Reveal>
           <div className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-3">
@@ -379,11 +383,11 @@ export default function HomePage() {
                     </ul>
                     <div className="mt-6">
                       <ButtonLink
-                        href="/pricing"
+                        href={plan.monthly === 0 ? "/agent" : "/pricing"}
                         variant={plan.highlighted ? "primary" : "secondary"}
                         className="w-full"
                       >
-                        {plan.monthly === 0 ? "Start free" : `Choose ${plan.name}`}
+                        {plan.monthly === 0 ? "Open workspace" : `Choose ${plan.name}`}
                       </ButtonLink>
                     </div>
                   </div>
@@ -393,7 +397,7 @@ export default function HomePage() {
           </div>
           <Reveal delay={0.2}>
             <p className="mt-8 text-center text-[13.5px] text-ink-mute">
-              Running finance for a larger organization?{" "}
+              Running analysis for a larger organization?{" "}
               <Link href="/enterprise" className="font-medium text-copper-strong hover:underline">
                 Talk to us about Enterprise
               </Link>
@@ -408,9 +412,9 @@ export default function HomePage() {
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <Reveal>
               <SectionHeading
-                eyebrow="Trust & security"
-                title="Built for professional finance data."
-                description="Your workspace content is yours. Fintra is designed for the confidentiality finance work demands — with clear controls over who sees what."
+                eyebrow="Privacy & security"
+                title="Your data stays yours."
+                description="Datasets are processed to produce your analysis and kept private to your browser's workspace. No account required means no account data to leak."
               />
               <div className="mt-7">
                 <ButtonLink href="/resources/security" variant="secondary">
@@ -421,10 +425,10 @@ export default function HomePage() {
             <Reveal delay={0.1}>
               <ul className="grid gap-4 sm:grid-cols-2">
                 {[
-                  ["Your data, your property", "Workspace content is never used to train models."],
-                  ["Encryption in transit & at rest", "Modern TLS and encrypted storage."],
-                  ["Session-based access control", "Signed-in users see only their workspace."],
-                  ["Clear model boundaries", "Provider handling documented, not hidden."],
+                  ["No training on your data", "Workspace content is never used to train models."],
+                  ["Encryption in transit", "Modern TLS on every request, uploads included."],
+                  ["Browser-scoped privacy", "Threads live in a private cookie — no account needed."],
+                  ["Verified computation", "Statistics come from our engine, not model guesses."],
                 ].map(([t, d]) => (
                   <li key={t} className="rounded-[var(--radius-card)] border border-line bg-surface p-5">
                     <p className="text-[14.5px] font-semibold text-ink">{t}</p>
@@ -458,21 +462,21 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-5 py-24 text-center sm:px-8 lg:py-32">
           <Reveal>
             <h2 className="mx-auto max-w-3xl text-[clamp(2rem,4.5vw,3.2rem)] font-semibold leading-[1.08] tracking-[-0.025em] text-paper">
-              Do your best finance work with Fintra.
+              Stop writing boilerplate. Start seeing answers.
             </h2>
           </Reveal>
           <Reveal delay={0.08}>
             <p className="mx-auto mt-5 max-w-xl text-lg text-paper/60">
-              Join the workspace where analysis, reporting, and agents come together.
+              Open the workspace, drop a file, and read the analysis — free, without an account.
             </p>
           </Reveal>
           <Reveal delay={0.14}>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-              <ButtonLink href="/signup" size="lg">
-                Start using Fintra
+              <ButtonLink href="/agent" size="lg">
+                Open workspace — free
               </ButtonLink>
               <ButtonLink href="/contact" variant="outlineLight" size="lg">
-                Contact sales
+                Contact us
               </ButtonLink>
             </div>
           </Reveal>

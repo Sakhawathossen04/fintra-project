@@ -47,7 +47,7 @@ export default async function SettingsPage() {
             <div>
               <dt className="text-[12px] uppercase tracking-wider text-ink-faint">Plan</dt>
               <dd className="mt-1 flex items-center gap-2 text-[15px] font-medium text-ink">
-                Fintra {plan.name}
+                DataLens {plan.name}
                 <Link href="/billing" className="text-[13px] font-medium text-copper-strong hover:underline">
                   Manage
                 </Link>

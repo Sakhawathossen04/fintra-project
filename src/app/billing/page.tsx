@@ -48,7 +48,7 @@ export default async function BillingPage() {
                 Current plan
               </p>
               <p className="mt-2 text-2xl font-semibold tracking-tight text-ink">
-                Fintra {plan.name}
+                DataLens {plan.name}
               </p>
               <p className="mt-1 text-[14px] text-ink-mute">
                 {plan.tagline}
@@ -130,7 +130,7 @@ export default async function BillingPage() {
                         year: "numeric",
                       })}
                     </td>
-                    <td className="px-5 py-3 font-medium text-ink">Fintra {PLANS[r.plan].name}</td>
+                    <td className="px-5 py-3 font-medium text-ink">DataLens {PLANS[r.plan].name}</td>
                     <td className="px-5 py-3 text-ink-soft">${(r.amountCents / 100).toFixed(2)}</td>
                     <td className="px-5 py-3">
                       <span

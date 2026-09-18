@@ -5,7 +5,7 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Terms of Service",
-  description: "Fintra Terms of Service.",
+  description: "DataLens Terms of Service.",
   path: "/terms",
 });
 
@@ -13,14 +13,14 @@ const SECTIONS: { h: string; ps: string[] }[] = [
   {
     h: "1. Acceptance",
     ps: [
-      "By creating a Fintra account or using the service, you agree to these Terms. If you use Fintra on behalf of an organization, you represent that you have authority to bind that organization.",
+      "By creating a DataLens account or using the service, you agree to these Terms. If you use DataLens on behalf of an organization, you represent that you have authority to bind that organization.",
     ],
   },
   {
     h: "2. The service",
     ps: [
-      "Fintra provides a Finance AI workspace including multi-model AI chat, financial analysis, report generation, agents, and workflows. Features evolve; material reductions to paid functionality will be communicated in advance.",
-      "AI outputs are drafts for your review. Fintra is decision support, not professional advice; you remain responsible for how outputs are used in your work.",
+      "DataLens provides a AI analysis workspace including multi-model AI chat, data analysis, report generation, agents, and workflows. Features evolve; material reductions to paid functionality will be communicated in advance.",
+      "AI outputs are drafts for your review. DataLens is decision support, not professional advice; you remain responsible for how outputs are used in your work.",
     ],
   },
   {
@@ -32,7 +32,7 @@ const SECTIONS: { h: string; ps: string[] }[] = [
   {
     h: "4. Acceptable use",
     ps: [
-      "Do not use Fintra to violate laws or others' rights, to process data you lack permission to process, or to attempt to disrupt or reverse-engineer the service.",
+      "Do not use DataLens to violate laws or others' rights, to process data you lack permission to process, or to attempt to disrupt or reverse-engineer the service.",
     ],
   },
   {
@@ -51,13 +51,13 @@ const SECTIONS: { h: string; ps: string[] }[] = [
   {
     h: "7. Disclaimers and liability",
     ps: [
-      "The service is provided 'as is' except as expressly stated. To the maximum extent permitted by law, Fintra's aggregate liability is limited to amounts paid in the 12 months preceding the claim.",
+      "The service is provided 'as is' except as expressly stated. To the maximum extent permitted by law, DataLens's aggregate liability is limited to amounts paid in the 12 months preceding the claim.",
     ],
   },
   {
     h: "8. Changes and contact",
     ps: [
-      "We may update these Terms with notice for material changes. Questions: hello@fintra.example.com.",
+      "We may update these Terms with notice for material changes. Questions: hello@datalens.example.com.",
     ],
   },
 ];
@@ -68,7 +68,7 @@ export default function TermsPage() {
       <PageHero
         eyebrow="Legal"
         title="Terms of Service."
-        description="The agreement between you and Fintra. Written to be read."
+        description="The agreement between you and DataLens. Written to be read."
       />
       <section className="border-b border-line">
         <div className="mx-auto max-w-3xl px-5 py-14 sm:px-8">
